@@ -1,0 +1,154 @@
+.. include:: content/title.txt
+.. include:: content/terms.txt
+.. include:: content/theory.txt
+.. include:: content/syntax.txt
+.. include:: content/examples.txt
+.. include:: content/tasks.txt
+
+Tkinter. Позиционирование элементов
+#######################################
+
+Метод pack()
+=======================================
+
+Для позиционирования элементов в окне применяются различные способы, и самый простой способ представляет вызов у элемента метода pack(). Этот метод принимает следующие параметры:
+
+* expand: если равно True, то виджет заполняет все пространство контейнера.
+* fill: определяет, будет ли виджет растягиваться, чтобы заполнить свободное пространство вокруг. Этот параметр может принимать следующие значения: NONE (по умолчанию, элемент не растягивается), X (элемент растягивается только по горизонтали), Y (элемент растягивается только по вертикали) и BOTH (элемент растягивается по вертикали и горизонтали).
+* side: выравнивает виджет по одной из сторон контейнера. Может принимать значения: TOP (по умолчанию, выравнивается по верхней стороне контейнера), BOTTOM (выравнивание по нижней стороне), LEFT (выравнивание по левой стороне), RIGHT (выравнивание по правой стороне).
+
+Применение метода без параметров может быть таким::
+
+  from tkinter import *
+
+  root = Tk()
+  btn = Button(root, text="Click me!")
+  btn.pack()
+  root.mainloop()
+
+Результат выполнения:
+
+.. image:: img/01_pack.png
+  :alt: скриншот
+
+Необходимость реализации виджетов друг за другом с лева на право::
+
+  from tkinter import *
+
+  root = Tk()
+  btn1 = Button(root, text="Button 1", fg="red", bg="yellow")
+  btn2 = Button(root, text="Button 2", fg="orange", bg="green")
+  btn3 = Button(root, text="Button 3", fg="white", bg="blue")
+  btn1.pack(side=LEFT)
+  btn2.pack(side=LEFT)
+  btn3.pack(side=LEFT)
+  root.mainloop()
+
+Результат выполнения:
+
+.. image:: img/02_pack.png
+  :alt: скриншот
+
+Расположение элементов по разные стороны. Для лучшего понимания попробуйте растянуть окно и понаблюдать за положением виджетов::
+
+  from tkinter import *
+
+  root = Tk()
+  btn1 = Button(root, text="Button 1", fg="red")
+  btn2 = Button(root, text="Button 2", fg="green")
+  btn3 = Button(root, text="Button 3", fg="black")
+  btn4 = Button(root, text="Button 4", fg="purple")
+  btn5 = Button(root, text="Button 5", fg="blue")
+  btn1.pack()
+  btn2.pack(side=TOP)
+  btn3.pack(side=LEFT)
+  btn4.pack(side=RIGHT)
+  btn5.pack(side=BOTTOM)
+  root.mainloop()
+
+Результат выполнения:
+
+.. image:: img/03_pack.png
+  :alt: скриншот
+
+Комбинируя параметры side и fill, можно растянуть элемент по вертикали::
+
+  from tkinter import *
+
+  root = Tk()
+  btn1 = Button(root, text="One", bg="red", fg="white")
+  btn2 = Button(root, text="Two", bg="green", fg="black")
+  btn3 = Button(root, text="Three", bg="blue", fg="yellow")
+  btn4 = Button(root, text="Four", bg="purple", fg="lightblue")
+  btn5 = Button(root, text="Five", bg="blue", fg="pink")
+  btn1.pack()
+  btn2.pack(side=TOP, fill=X)
+  btn3.pack(side=LEFT, fill=Y)
+  btn4.pack(side=RIGHT)
+  btn5.pack(side=BOTTOM)
+  root.mainloop()
+
+Результат выполнения:
+
+.. image:: img/04_pack.png
+  :alt: скриншот
+
+Следующие два свойства – fill (заполнение) и expand (расширение). По-умолчанию expand равен нулю (другое значение – единица), а fill – NONE (другие значения BOTH, X, Y). Создадим окно с одной меткой::
+
+  from tkinter import *
+  root = Tk()
+  l1 = Label(bg="lightgreen", width=30, height=10, text="This is a label")
+  l1.pack()
+  root.mainloop()
+
+Если начать расширять окно или сразу раскрыть его на весь экран, то метка окажется вверху по вертикали и в середине по горизонтали. Причина, по которой метка не в середине по вертикали заключается в том, что side по-умолчанию равен TOP, и метку прибивает к верху.
+
+.. image:: img/05_pack.png
+  :alt: скриншот
+
+Если установить свойство expand в 1, то при расширении окна метка будет всегда в середине::
+
+  …
+  l1.pack(expand=1)
+  …
+
+Результат выполнения:
+
+.. image:: img/06_pack.png
+  :alt: скриншот
+
+Свойство fill заставляет виджет заполнять все доступное пространство. Заполнить его можно во всех направлениях или только по одной из осей::
+
+  …
+  l1.pack(expand=1, fill=Y)
+  …
+
+Результат выполнения:
+
+.. image:: img/07_pack.png
+  :alt: скриншот
+
+Последняя опция метода pack() – anchor (якорь) – может принимать значения N (north – север), S (south – юг), W (west – запад), E (east – восток) и их комбинации::
+
+  …
+  l1.pack(expand=1, anchor=SE)
+  …
+
+Результат выполнения:
+
+.. image:: img/08_pack.png
+  :alt: скриншот
+
+Упражнения
+---------------------------------------
+
+Напишите программу, состоящую из семи кнопок, цвета которых соответствуют цветам радуги. При нажатии на ту или иную кнопку в текстовое поле должен вставляться код цвета, а в метку – название цвета.
+
+Коды цветов в шестнадцатеричной кодировке: #ff0000 – красный, #ff7d00 – оранжевый, #ffff00 – желтый, #00ff00 – зеленый, #007dff – голубой, #0000ff – синий, #7d00ff – фиолетовый.
+
+Примерно должно получиться так:
+
+.. image:: img/09_pack.png
+  :alt: скриншот
+
+Для выравнивания строки по центру в текстовом поле используется свойство justify со значением CENTER.

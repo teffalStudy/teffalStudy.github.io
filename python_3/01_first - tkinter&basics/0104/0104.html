@@ -1,0 +1,265 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>5. Tkinter. Создание графического интерфейса &#8212; Документация Python 3: практическое применение 0.1</title>
+    <link rel="stylesheet" href="../../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../_static/translations.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../../search.html" />
+    <link rel="next" title="6. Tkinter. Диалоговые окна" href="../0105/0105.html" />
+    <link rel="prev" title="4. Работа с датами и временем" href="../0103/0103.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Навигация</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="Алфавитный указатель"
+             accesskey="I">указатель</a></li>
+        <li class="right" >
+          <a href="../0105/0105.html" title="6. Tkinter. Диалоговые окна"
+             accesskey="N">вперёд</a> |</li>
+        <li class="right" >
+          <a href="../0103/0103.html" title="4. Работа с датами и временем"
+             accesskey="P">назад</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Документация Python 3: практическое применение 0.1</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="tkinter">
+<h1>5. Tkinter. Создание графического интерфейса<a class="headerlink" href="#tkinter" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="section" id="id1">
+<h2>5.1. Создание окна приложения<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Многие программы на сегодняшний день используют графический интерфейс, который более интуитивен и удобен для пользователя, чем консоль. И с помощью языка программирования Python также можно создавать графические программы. Для этого в Python по умолчанию применяется специальный тулкит - набор компонентов, который называется tkinter.</p>
+<p>Тулкит tkinter доступен в виде отдельного встроенного модуля, который содержит все необходимые графические компоненты - кнопки, текстовые поля и т.д.</p>
+<p>Базовым моментом в построении графических программ является создание окна. Затем в окно добавляются все остальные компоненты графического интерфейса. Поэтому создадим вначале простейшее окно. Для этого определим следующий скрипт:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tkinter</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">Tk</span><span class="p">()</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">any code</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Для создания графического окна применяется конструктор Tk(), который определен в модуле tkinter. Создаваемое окно присваивается переменной root, и через эту переменную мы можем управлять атрибутами окна.
+Вместо комментария „“„any code“„“ добавляются все необходимые компоненты окна.</p>
+<p>Для отображения окна надо вызвать у него метод mainloop(), который запускает цикл обработки событий окна для взаимодействия с пользователем.</p>
+<p>В результате при запуске скрипта мы увидим такое пустое окошко:</p>
+<img alt="скриншот" src="../../../_images/01_window.png" />
+<p>C помощью метода title() можно установить заголовок окна.</p>
+<p>С помощью метода geometry() - размер окна. Для установки размера в метод geometry() передается строка в формате «Ширина x Высота». Если при создании окна приложения метод geometry() не вызывается, то окно занимает то пространство, которое необходимо для размещения внутреннего содержимого:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tkinter</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">Tk</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;My first window title&#39;</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s1">&#39;350x200&#39;</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Результат выполнения:</p>
+<img alt="скриншот" src="../../../_images/02_window.png" />
+<div class="section" id="id2">
+<h3>5.1.1. Начальная позиция окна<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h3>
+<p>По умолчанию окно позиционируется в верхний левый угол экрана. Но мы можем изменить его положение, передав нужные значения в метод geometry():</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tkinter</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">Tk</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;My second Python window&quot;</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s2">&quot;400x300+300+250&quot;</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Теперь строка в методе geometry имеет следующий формат: «Ширина x Высота + координатаX + координатаY». То есть при запуске окно будет находиться на 300 пикселей вправо и на 250 пикселей вниз от верхнего левого угла экрана.</p>
+</div>
+</div>
+<div class="section" id="label">
+<h2>5.2. Label - метка<a class="headerlink" href="#label" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Тулкит tkinter содержит набор компонентов или виджетов, одним из которых является метка - label.
+Метки (или надписи) — это достаточно простые виджеты, содержащие строку (или несколько строк) текста и служащие в основном для информирования пользователя.</p>
+<p>Добавим кнопку в окно:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tkinter</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">Tk</span><span class="p">()</span>
+<span class="n">lbl</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;This text wrote in the first label!&quot;</span><span class="p">)</span>
+<span class="n">lbl</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Для создания метки используется конструктор Label(). В этом конструкторе с помощью параметра text можно установить текст виджета.
+Чтобы сделать элемент видимым, у него вызывается метод pack(). В итоге вверху окна будет красоваться метка с текстом:</p>
+<img alt="скриншот" src="../../../_images/01_label.png" />
+<p>Для создания двух и более виджетов достаточно просто создать кнопку и добавить его в окно:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tkinter</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">Tk</span><span class="p">()</span>
+<span class="n">lbl</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;This text wrote in the first label!&quot;</span><span class="p">)</span>
+<span class="n">lbl2</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;This text wrote in the second label!&quot;</span><span class="p">)</span>
+<span class="n">lbl</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+<span class="n">lbl2</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Результат выполнения:</p>
+<img alt="скриншот" src="../../../_images/02_label.png" />
+<p>Каждый виджет, имеет ряд атрибутов, которые влияют на ее визуализацию и которые мы можем настроить через конструктор:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tkinter</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">Tk</span><span class="p">()</span>
+<span class="n">lbl</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Hello&quot;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;Arial Bold&quot;</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span> <span class="n">bg</span><span class="o">=</span><span class="s2">&quot;lightgreen&quot;</span><span class="p">)</span>
+<span class="n">lbl</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Результат выполнения:</p>
+<img alt="скриншот" src="../../../_images/03_label.png" />
+</div>
+<div class="section" id="button">
+<h2>5.3. Button - кнопка<a class="headerlink" href="#button" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Для создания кнопки используется конструктор Button(). В этом конструкторе с помощью параметра text можно установить текст кнопки:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tkinter</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">Tk</span><span class="p">()</span>
+<span class="n">btn</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Click me!&quot;</span><span class="p">)</span>
+<span class="n">btn</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Чтобы сделать элемент видимым, у него вызывается метод pack(). В итоге вверху окна будет красоваться кнопка:</p>
+<img alt="скриншот" src="../../../_images/01_button.png" />
+<p>Каждый виджет, в том числе кнопка, имеет ряд атрибутов, которые влияют на ее визуализацию и которые мы можем настроить через конструктор:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tkinter</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">Tk</span><span class="p">()</span>
+<span class="n">btn</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Click me!&quot;</span><span class="p">,</span> <span class="n">fg</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="s2">&quot;yellow&quot;</span><span class="p">)</span>
+<span class="n">btn</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Параметры bg - background и fg - foreground получают значение цвета. Результат выполнения:</p>
+<img alt="скриншот" src="../../../_images/02_button.png" />
+</div>
+<div class="section" id="id3">
+<h2>5.4. Параметры виджетов<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Всего же конструктор Button может принимать следующие параметры:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Параметр master представляет ссылку на родительский контейнер. В случае выше это могло бы быть само графическое окно, и мы могли написать:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">root</span> <span class="o">=</span> <span class="n">Tk</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;GUI на Python&quot;</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s2">&quot;300x250&quot;</span><span class="p">)</span>
+<span class="n">btn</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
+<span class="n">btn</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Однако если в коде создается одно окно, то кнопка и любой другой элемент уже по умолчанию размещаются в этом окне. Поэтому первый параметр мы можем опустить, как в примерах выше. Если бы у нас в коде создавалось бы несколько окон, тогда мы могли бы передать в конструктор Button ссылку на нужное окно.</p>
+<p>Второй параметр options представляет набор на самом деле набор параметров, которые мы можем установить по их имени:</p>
+<ul class="simple">
+<li>activebackground: цвет элемента, когда он находится в нажатом состоянии</li>
+<li>activeforeground: цвет текста элемента, когда он в нажатом состоянии</li>
+<li>bd: толщина границы (по умолчанию 2)</li>
+<li>bg/background: фоновый цвет</li>
+<li>fg/foreground: цвет текста</li>
+<li>font: шрифт текста, например, font=»Arial 14» - шрифт Arial высотой 14px, или font=(«Verdana», 13, «bold») - шрифт Verdana высотой 13px с выделением жирным</li>
+<li>height: высота элемента</li>
+<li>highlightcolor: цвет элемента, когда она в фокусе</li>
+<li>image: изображение на элементе</li>
+<li>justify: устанавливает выравнивание текста. Значение LEFT выравнивает текст по левому краю, CENTER - по центру, RIGHT - по правому краю</li>
+<li>padx: отступ от границ элемента до ее текста справа и слева</li>
+<li>pady: отступ от границ элемента до ее текста сверху и снизу</li>
+<li>relief: определяет тип границы, может принимать значения SUNKEN, RAISED, GROOVE, RIDGE</li>
+<li>state: устанавливает состояние элемента, может принимать значения DISABLED, ACTIVE, NORMAL (по умолчанию)</li>
+<li>text: устанавливает текст элемента</li>
+<li>textvariable: устанавливает привязку к элементу StringVar</li>
+<li>underline: указывает на номер символа в тексте элемента, который подчеркивается. По умолчанию значение -1, то есть никакой символ не подчеркивается</li>
+<li>width: ширина элемента</li>
+<li>wraplength: при положительном значении строки текста будут переносится для вмещения в пространство элемента</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../../index.html">Оглавление</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">5. Tkinter. Создание графического интерфейса</a><ul>
+<li><a class="reference internal" href="#id1">5.1. Создание окна приложения</a><ul>
+<li><a class="reference internal" href="#id2">5.1.1. Начальная позиция окна</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#label">5.2. Label - метка</a></li>
+<li><a class="reference internal" href="#button">5.3. Button - кнопка</a></li>
+<li><a class="reference internal" href="#id3">5.4. Параметры виджетов</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Предыдущий раздел</h4>
+  <p class="topless"><a href="../0103/0103.html"
+                        title="предыдущая глава">4. Работа с датами и временем</a></p>
+  <h4>Следующий раздел</h4>
+  <p class="topless"><a href="../0105/0105.html"
+                        title="следующая глава">6. Tkinter. Диалоговые окна</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Эта страница</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/python_3/01_first - tkinter&amp;basics/0104/0104.rst.txt"
+            rel="nofollow">Исходный текст</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Быстрый поиск</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Искать" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Навигация</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="Алфавитный указатель"
+             >указатель</a></li>
+        <li class="right" >
+          <a href="../0105/0105.html" title="6. Tkinter. Диалоговые окна"
+             >вперёд</a> |</li>
+        <li class="right" >
+          <a href="../0103/0103.html" title="4. Работа с датами и временем"
+             >назад</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Документация Python 3: практическое применение 0.1</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, SmartPer.
+      Создано с помощью <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.6.
+    </div>
+  </body>
+</html>

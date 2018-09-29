@@ -1,0 +1,230 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>13. Tkinter. Содержание котенка (часть 2) &#8212; Документация Python 3: практическое применение 0.1</title>
+    <link rel="stylesheet" href="../../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../_static/translations.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../../search.html" />
+    <link rel="prev" title="12. Tkinter. Содержание котенка (часть 1)" href="../0111/0111.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Навигация</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="Алфавитный указатель"
+             accesskey="I">указатель</a></li>
+        <li class="right" >
+          <a href="../0111/0111.html" title="12. Tkinter. Содержание котенка (часть 1)"
+             accesskey="P">назад</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Документация Python 3: практическое применение 0.1</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="tkinter-2">
+<h1>13. Tkinter. Содержание котенка (часть 2)<a class="headerlink" href="#tkinter-2" title="Ссылка на этот заголовок">¶</a></h1>
+<p>На предыдущем уроке мы создавали интерфейс - своего рода «фронтэнд».
+Далее мы запрограммируем поведение программы при нажатии на кнопки: обработку событий кнопок - эту «теневую» сторону программы скрытую от глаз пользователя называют «бэкэнд».</p>
+<div class="section" id="id1">
+<h2>13.1. Планирование проекта<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Перед тем чтобы что-то начинать делать важно расположить задачу на шаги, и чем подробней и мельче шаг будет получен, тем легче, проще и быстрей их будет реализовать:</p>
+<ol class="arabic simple">
+<li>требуется обработать событие нажатие кнопки;</li>
+<li>обработка события включает в себя команду вызова события и функцию которая вызывается;</li>
+<li>нужно понимать, что каждое окошко в каждой строчке служит для ввода данных;</li>
+<li>вводимые данные необходимо считать (взять из поля) и хранить их;</li>
+<li>необходимо создать переменные, в которых будут храниться вводимые данные, для каждого поля отдельно;</li>
+<li>обработка значений переменных;</li>
+<li>вывод результатов в соответствующие поля.</li>
+</ol>
+</div>
+<div class="section" id="id2">
+<h2>13.2. Обработка нажатия кнопки<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<p>При нажатии на кнопку программы в программе происходит вызов события.
+Имя вызываемого события которое будет являться именем вызываемой функции выбирается произвольно, но с учетом правил именования переменных в языках программирования.
+Кроме этого имена функций часто начинаются со слов:</p>
+<ul class="simple">
+<li>«set» - если функция получает и записывает данные в переменную;</li>
+<li>«get» - если функция выводит данные.</li>
+</ul>
+<p>Код функции обязательно необходимо размещать перед тем как его будут вызывать, т.е. если функция вызывается в строке 15, то написана вызываемая функция должна быть выше, например в строке 10.
+Для понятности кода порядок написания программы бывает следующий:</p>
+<ol class="arabic simple">
+<li>импорт библиотек</li>
+<li>объявление всех глобальных переменных</li>
+<li>создание и описание всех функций</li>
+<li>основное тело программы</li>
+<li>в сложных проектах: последняя строка - это строка запуска программы.</li>
+</ol>
+<p>Функция будет получать данные полей одной строки, поэтому мы назовем функцию: set_first.
+Добавьте код функции, в соответствующее место кода программы:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">set_first</span><span class="p">()</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Called the first function!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Результат выполнения, кода будет прежним: окно программы:</p>
+<img alt="скриншот" src="../../../_images/06_cat_app1.png" />
+<p>при этом при нажатии на любую из кнопок ничего не происходит, потому что мы не вписали код обработчика события: нажмите на кнопку.
+Команда обработчика событий: command=set_first. Т.е. необходимо изменить строку создания кнопки таким образом:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">button_1</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">set_first</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Запустив код программы, запуститься то же окно, но при нажатии на кнопку в первой строке, в консоли будет выводиться сообщение:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Called the first function!
+</pre></div>
+</div>
+<p>Теперь создайте функцию и обработчик события для второй кнопки. Измените во второй функции надпись выводимую в консоль на «Called the second event».
+Проверьте правильность работу второй кнопки. Если все работает верно и понятно. Добавьте обработчики событий для всех оставшихся кнопок.</p>
+</div>
+<div class="section" id="id3">
+<h2>13.3. Хранение, ввод и вывод данных окна<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Для сохранения данных заданных в одно из полей нужно сначала создать переменную в которой их хранить.
+Создадим переменную для второго поля первой строки, дав ей соответствующее название. И присвоим значение переменной равной 5:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">num12</span> <span class="o">=</span> <span class="n">StringVar</span><span class="p">()</span>
+<span class="n">num12</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Для того чтобы связать поле ввода данных с этой переменной внесем изменения в код в строке:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">entry_12</span> <span class="o">=</span> <span class="n">Entry</span><span class="p">(</span><span class="n">textvariable</span><span class="o">=</span><span class="n">num12</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>В результате выполнения во втором поле первой строки будет выведена цифра «5»:</p>
+<img alt="скриншот" src="../../../_images/07_cat_app.png" />
+<p>Создайте переменный для третьего и четвертого полей первой строки и присвойте им значения 3 и 4. Визуализация окна должна получиться следующей:</p>
+<img alt="скриншот" src="../../../_images/08_cat_app.png" />
+<p>Считывание данных из полей, будет происходить при нажатии на кнопку. Для получения данных из поля нужно написать следующую команду: num12.get()
+Изменим код вызываемой функции:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">set_first</span><span class="p">()</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Called the first function!&quot;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">num12</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>В результате запуска, приложения при нажатии на кнопку в консоли будет выведены надпись и число:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Called the first function!
+5
+</pre></div>
+</div>
+<p>Выведите данные в консоль третьего и четвертого текстового поля доработав код соответствующим образом.</p>
+</div>
+<div class="section" id="id4">
+<h2>13.4. Обработка значений переменных<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Последнее поле в строке программы будет выводить результат вычисления предыдущих полей.
+Для начала создадим переменную в которой будем хранить данные для последнего поля первой строки и присвоим значение равное «0»:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">total_first</span> <span class="o">=</span> <span class="n">StringVar</span><span class="p">()</span>
+<span class="n">total_first</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>И привяжем переменную к полю:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">entry_15</span> <span class="o">=</span> <span class="n">Entry</span><span class="p">(</span><span class="n">textvariable</span><span class="o">=</span><span class="n">total_first</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Для получения значения общей цены затрат надень рассчитывается по формуле:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">количество</span> <span class="n">единиц</span> <span class="o">*</span> <span class="n">цена</span> <span class="n">за</span> <span class="n">единицу</span> <span class="n">товара</span> <span class="o">/</span> <span class="n">количество</span> <span class="n">дней</span> <span class="o">=</span> <span class="n">общая</span> <span class="n">цена</span> <span class="n">в</span> <span class="n">день</span>
+</pre></div>
+</div>
+<p>Все преобразования и выведения результата вносим в функцию обработки события нажатия на кнопку первой строки для последнего первой строки:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">set_first</span><span class="p">()</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Called the first function!&quot;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">num12</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
+
+  <span class="k">global</span> <span class="n">total_first</span>
+  <span class="n">total_first</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">num12</span><span class="o">.</span><span class="n">get</span><span class="p">())</span><span class="o">*</span><span class="nb">float</span><span class="p">(</span><span class="n">num13</span><span class="o">.</span><span class="n">get</span><span class="p">())</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">num14</span><span class="o">.</span><span class="n">get</span><span class="p">()))</span>
+</pre></div>
+</div>
+<p>Команда global необходима, чтобы функция увидела созданную вначале программы переменную total_first.
+Значения из текстовых полей, передаются в виде строки поэтому для вычисления с ними данные необходимо преобразовать в число.
+Функция float(…) преобразует строку в число с плавающей запятой.</p>
+<p>Теперь при запуске программы и нажатии кнопки в последнем поле должно появиться вычисленное значение:</p>
+<img alt="скриншот" src="../../../_images/09_cat_app.png" />
+<p>По аналогии доделайте три строки программы.</p>
+<p>Всего затраты за год высчитываются по формуле:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">общая</span> <span class="n">цена</span> <span class="n">первой</span> <span class="n">строки</span> <span class="o">+</span> <span class="n">общая</span> <span class="n">цена</span> <span class="n">второй</span> <span class="n">строки</span> <span class="o">+</span> <span class="n">общая</span> <span class="n">цена</span> <span class="n">третьей</span> <span class="n">строки</span><span class="p">)</span> <span class="o">*</span> <span class="mi">365</span> <span class="o">=</span> <span class="n">всего</span> <span class="n">за</span> <span class="n">год</span>
+</pre></div>
+</div>
+<p>И вычисляются при нажатии на соответствующую кнопку равно.</p>
+<p>Количество лет - это поле не вычисляемое, а поле ввода длительность жизни котенка.;)
+И при нажатии кнопки «Итого» выводиться результат всех затрат, вычисляем по формуле:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">всего</span> <span class="n">затраты</span> <span class="n">за</span> <span class="n">год</span> <span class="o">*</span> <span class="n">количество</span> <span class="n">лет</span> <span class="o">=</span> <span class="n">общее</span> <span class="n">содержание</span> <span class="n">за</span> <span class="n">все</span> <span class="n">годы</span>
+</pre></div>
+</div>
+<p>Результат программы может быть следующим:</p>
+<img alt="скриншот" src="../../../_images/10_cat_app.png" />
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../../index.html">Оглавление</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">13. Tkinter. Содержание котенка (часть 2)</a><ul>
+<li><a class="reference internal" href="#id1">13.1. Планирование проекта</a></li>
+<li><a class="reference internal" href="#id2">13.2. Обработка нажатия кнопки</a></li>
+<li><a class="reference internal" href="#id3">13.3. Хранение, ввод и вывод данных окна</a></li>
+<li><a class="reference internal" href="#id4">13.4. Обработка значений переменных</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Предыдущий раздел</h4>
+  <p class="topless"><a href="../0111/0111.html"
+                        title="предыдущая глава">12. Tkinter. Содержание котенка (часть 1)</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Эта страница</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/python_3/01_first - tkinter&amp;basics/0112/0112.rst.txt"
+            rel="nofollow">Исходный текст</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Быстрый поиск</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Искать" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Навигация</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="Алфавитный указатель"
+             >указатель</a></li>
+        <li class="right" >
+          <a href="../0111/0111.html" title="12. Tkinter. Содержание котенка (часть 1)"
+             >назад</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Документация Python 3: практическое применение 0.1</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, SmartPer.
+      Создано с помощью <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.6.
+    </div>
+  </body>
+</html>

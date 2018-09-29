@@ -1,0 +1,122 @@
+Python layout
+=====================================
+            
+Термины
+-------------------------------------
+
+Python layout - назначение
+-------------------------------------
+
+(для чего используется)
+
+
+Синтаксис
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+  print(<expression>)
+
+(<expression> - типы выражений которые могут быть)
+
+Пример layout 1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+  from tkinter import *
+  
+  root = Tk()
+  btn = Button(root, text="Click me!")
+  btn.pack()
+  root.mainloop()
+  
+  
+
+
+Результат выполнения:
+
+.. image:: img/01_layout.png
+  :alt: скриншот
+
+Пример layout 2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+  from tkinter import *
+  
+  root = Tk()
+  btn1 = Button(root, text="Button 1", fg="red", bg="yellow")
+  btn2 = Button(root, text="Button 2", fg="orange", bg="green")
+  btn3 = Button(root, text="Button 3", fg="white", bg="blue")
+  btn1.pack(side=LEFT)
+  btn2.pack(side=LEFT)
+  btn3.pack(side=LEFT)
+  root.mainloop()
+  
+  
+
+
+Результат выполнения:
+
+.. image:: img/02_layout.png
+  :alt: скриншот
+
+Пример layout 3
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+  from tkinter import *
+  
+  root = Tk()
+  btn1 = Button(root, text="Button 1", fg="red", bg="yellow")
+  btn2 = Button(root, text="Button 2", fg="orange", bg="green")
+  btn3 = Button(root, text="Button 3", fg="white", bg="blue")
+  btn1.pack(side=LEFT)
+  btn2.pack(side=LEFT)
+  btn3.pack(side=LEFT)
+  root.mainloop()
+  
+  
+
+
+Результат выполнения:
+
+.. image:: img/03_layout.png
+  :alt: скриншот
+
+Пример layout 4
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+  from tkinter import *
+  
+  root = Tk()
+  btn1 = Button(root, text="Button 1", fg="red")
+  btn2 = Button(root, text="Button 2", fg="green")
+  btn3 = Button(root, text="Button 3", fg="black")
+  btn4 = Button(root, text="Button 4", fg="purple")
+  btn5 = Button(root, text="Button 5", fg="blue")
+  btn1.pack()
+  btn2.pack(side=TOP)
+  btn3.pack(side=LEFT)
+  btn4.pack(side=RIGHT)
+  btn5.pack(side=BOTTOM)
+  root.mainloop()
+  
+  
+
+
+Результат выполнения:
+
+.. image:: img/04_layout.png
+  :alt: скриншот
+
+Упражнения
+-------------------------------------
+
+#. (задача ...)
+            

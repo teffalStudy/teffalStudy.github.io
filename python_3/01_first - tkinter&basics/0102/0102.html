@@ -1,0 +1,248 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>3. Python типы данных &#8212; Документация Python 3: практическое применение 0.1</title>
+    <link rel="stylesheet" href="../../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../_static/translations.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../../search.html" />
+    <link rel="next" title="4. Работа с датами и временем" href="../0103/0103.html" />
+    <link rel="prev" title="2. Python начало" href="../0101/0101.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Навигация</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="Алфавитный указатель"
+             accesskey="I">указатель</a></li>
+        <li class="right" >
+          <a href="../0103/0103.html" title="4. Работа с датами и временем"
+             accesskey="N">вперёд</a> |</li>
+        <li class="right" >
+          <a href="../0101/0101.html" title="2. Python начало"
+             accesskey="P">назад</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Документация Python 3: практическое применение 0.1</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="python">
+<h1>3. Python типы данных<a class="headerlink" href="#python" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="section" id="str">
+<h2>3.1. Строки str()<a class="headerlink" href="#str" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Так как многие программы определяют и собирают некие данные, а затем делают с ними что-то полезное,
+желательно выделить основные разновидности данных. Начнем со строковых данных.
+На первый взгляд строки достаточно просты, но с ними можно работать многими разными способами.
+Строка представляет собой простую последовательность символов.
+Любая последовательность символов, заключенная в кавычки, в Python считается строкой;
+при этом строки могут быть заключены как в одиночные, так и в двойные кавычки:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;This is a string.&quot;</span>
+<span class="s1">&#39;This is also a string.&#39;</span>
+</pre></div>
+</div>
+<p>Это правило позволяет использовать внутренние кавычки и апострофы в строках:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;I told my friend, &quot;Python is my favorite language!&quot;&#39;</span>
+<span class="s2">&quot;The language &#39;Python&#39; is named after Monty Python, not the snake.&quot;</span>
+<span class="s2">&quot;One of Python&#39;s strengths is its diverse and supportive community.&quot;</span>
+</pre></div>
+</div>
+<p>Многострочный текст, который встречается в коде обычно выделяют в тройные одинарные или двойные кавычки:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Это первый пример кода,</span>
+<span class="sd">который может содержаться в тексте.</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Выделение многострочного текста должно начинаться и заканчиваться одними и тем же видом кавычек.</span>
+<span class="sd">Если начинаем текст с двойных кавычек, то и заканчиваем двойными.</span>
+<span class="sd">Если начинаем одинарными кавычками, то и заканчиваем одинарными.</span>
+<span class="sd">Если начинаем текст с тройных двойных кавычек, то и заканчиваем тройными двойными.</span>
+<span class="sd">Если начинаем тройными одинарными кавычками, то и заканчиваем тройными одинарными.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<div class="section" id="id1">
+<h3>3.1.1. Упражнения<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Сохраните код каждого из следующих упражнений в отдельном файле с именем name_cases.py</p>
+<ol class="arabic simple">
+<li>Выведите в консоль два любых однострочных сообщения используя команду print() и двойные или одинарные кавычки.</li>
+<li>Выведите в консоль два любых многострочных сообщения используя print() и тройные кавычки.</li>
+</ol>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>3.2. Числа<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Числа очень часто применяются в программировании для ведения счета в играх, представления данных в визуализациях, хранения информации в веб-приложениях и т.д. В Python числовые данные делятся на несколько категорий по способу их использования. Для начала посмотрим, как Python работает с целыми числами, потому что с ними возникает меньше всего проблем.</p>
+<div class="section" id="int">
+<h3>3.2.1. Целые числа int()<a class="headerlink" href="#int" title="Ссылка на этот заголовок">¶</a></h3>
+<p>В Python с целыми числами можно выполнять операции сложения (+), вычитания (-), умножения (*) и деления(/):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">3</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">3</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">3</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="c1"># догадайтесь что значит операция &quot;**&quot; ?</span>
+</pre></div>
+</div>
+<p>Результат выполнения:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">5</span>
+<span class="mi">1</span>
+<span class="mi">6</span>
+<span class="mf">1.5</span>
+<span class="mi">9</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="float">
+<h3>3.2.2. Вещественные числа float()<a class="headerlink" href="#float" title="Ссылка на этот заголовок">¶</a></h3>
+<p>В Python числа, имеющие дробную часть, называются вещественными (или «числами с плавающей точкой»). Обычно разработчик может просто пользоваться дробными значениями, не особенно задумываясь об их поведении. Просто введите нужные числа, а Python скорее всего сделает именно то, что вы от него хотите:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mf">0.2</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">3</span> <span class="o">-</span> <span class="mf">0.2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mf">2.5</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mf">3.8</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Результат выполнения:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">3.2</span>
+<span class="mf">2.8</span>
+<span class="mf">7.5</span>
+<span class="mf">1.9</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h3>3.2.3. Упражнения<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h3>
+<ol class="arabic">
+<li><p class="first">Число 8: напишите операции сложения, вычитания, умножения и деления, результатом которых является число 8. Не забудьте заключить операции в команды print(), чтобы проверить результат. Вы должны написать четыре строки кода, которые выглядят примерно так:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">5</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Результатом должны быть четыре строки, в каждой из которых выводится число 8.</p>
+<ol class="arabic simple">
+<li>Любимое число: сохраните свое любимое число в переменной. Затем при помощи переменной создайте сообщение для вывода этого числа. Выведите это сообщение.</li>
+</ol>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>3.3. Комментарии<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Комментарии чрезвычайно полезны в любом языке программирования. До сих пор ваши программы состояли только из кода Python. По мере роста объема и сложности кода в программы следует добавлять комментарии, описывающие общий подход к решаемой задаче, - своего рода заметки, написанные на понятном языке.</p>
+<div class="section" id="id5">
+<h3>3.3.1. Как создаются комментарии?<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h3>
+<p>В языке Python признаком комментария является символ «решетка» (#). Интерпретатор Python игнорирует все символы, следующие в коде после # до конца строки. Пример:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Say hello to everyone.</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello Python people!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Python игнорирует первую строку и выполняет вторую:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Hello Python people!
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h3>3.3.2. Какие комментарии следует писать?<a class="headerlink" href="#id6" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Комментарии пишутся прежде всего для того, чтобы объяснить, что должен делать ваш код и как он работает. В ходе работы над проектом вы понимаете, как работают все его компоненты. Но, если вернуться к проекту спустя некоторое время, скорее всего, некоторые подробности будут забыты. Конечно, всегда можно изучить код и разобраться в том, как должны работать его части, но хорошие комментарии с доступным изложением общих принципов работы кода сэкономят немало времени. Если вы хотите стать профессиональным программистом или участвовать в совместной работе с другими программистами, научитесь писать осмысленные комментарии. В наши дни почти все программы разрабатываются коллективно в группах - либо группами работников одной компании, либо группами энтузиастов, совместно работающих над проектом с открытым кодом. Опытные программисты ожидают увидеть комментарии в коде, поэтому лучше привыкайте добавлять содержательные комментарии прямо сейчас. Написание простых, лаконичных комментариев – одна из самых полезных привычек, необходимых начинающему программисту.</p>
+<p>Принимая решение о том, нужно ли писать комментарий или нет, спросите себя, пришлось ли вам перебрать несколько вариантов в поисках разумного решения для некоторой задачи; если ответ будет положительным, напишите комментарий по поводу вашего решения. Удалить лишние комментарии позднее намного проще, чем возвращаться и добавлять комментарии в программу. С этого момента будем использовать комментарии в примерах для пояснения смысла некоторых частей кода.</p>
+</div>
+<div class="section" id="id7">
+<h3>3.3.3. Упражнения<a class="headerlink" href="#id7" title="Ссылка на этот заголовок">¶</a></h3>
+<ol class="arabic simple">
+<li>Добавление комментариев: выберите две программы из написанных вами и добавьте в каждую хотя бы один комментарий. Если вы не найдете, что написать в комментариях, потому что программы были слишком просты, добавьте свое имя и текущую дату в начало кода. Затем добавьте одно предложение с описанием того, что делает программа.</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../../index.html">Оглавление</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">3. Python типы данных</a><ul>
+<li><a class="reference internal" href="#str">3.1. Строки str()</a><ul>
+<li><a class="reference internal" href="#id1">3.1.1. Упражнения</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id2">3.2. Числа</a><ul>
+<li><a class="reference internal" href="#int">3.2.1. Целые числа int()</a></li>
+<li><a class="reference internal" href="#float">3.2.2. Вещественные числа float()</a></li>
+<li><a class="reference internal" href="#id3">3.2.3. Упражнения</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id4">3.3. Комментарии</a><ul>
+<li><a class="reference internal" href="#id5">3.3.1. Как создаются комментарии?</a></li>
+<li><a class="reference internal" href="#id6">3.3.2. Какие комментарии следует писать?</a></li>
+<li><a class="reference internal" href="#id7">3.3.3. Упражнения</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Предыдущий раздел</h4>
+  <p class="topless"><a href="../0101/0101.html"
+                        title="предыдущая глава">2. Python начало</a></p>
+  <h4>Следующий раздел</h4>
+  <p class="topless"><a href="../0103/0103.html"
+                        title="следующая глава">4. Работа с датами и временем</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Эта страница</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/python_3/01_first - tkinter&amp;basics/0102/0102.rst.txt"
+            rel="nofollow">Исходный текст</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Быстрый поиск</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Искать" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Навигация</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="Алфавитный указатель"
+             >указатель</a></li>
+        <li class="right" >
+          <a href="../0103/0103.html" title="4. Работа с датами и временем"
+             >вперёд</a> |</li>
+        <li class="right" >
+          <a href="../0101/0101.html" title="2. Python начало"
+             >назад</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Документация Python 3: практическое применение 0.1</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, SmartPer.
+      Создано с помощью <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.6.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,176 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>12. Tkinter. Содержание котенка (часть 1) &#8212; Документация Python 3: практическое применение 0.1</title>
+    <link rel="stylesheet" href="../../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../_static/translations.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../../search.html" />
+    <link rel="next" title="13. Tkinter. Содержание котенка (часть 2)" href="../0112/0112.html" />
+    <link rel="prev" title="11. Tkinter. Визуализация калькулятора" href="../0110/0110.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Навигация</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="Алфавитный указатель"
+             accesskey="I">указатель</a></li>
+        <li class="right" >
+          <a href="../0112/0112.html" title="13. Tkinter. Содержание котенка (часть 2)"
+             accesskey="N">вперёд</a> |</li>
+        <li class="right" >
+          <a href="../0110/0110.html" title="11. Tkinter. Визуализация калькулятора"
+             accesskey="P">назад</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Документация Python 3: практическое применение 0.1</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="tkinter-1">
+<h1>12. Tkinter. Содержание котенка (часть 1)<a class="headerlink" href="#tkinter-1" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Данный проект создадим с использованием grid и ttk виджетов.</p>
+<div class="section" id="id1">
+<h2>12.1. Планирование проекта<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Первое с чего начинается новый проект, после идеи, это план реализации:</p>
+<ol class="arabic simple">
+<li>выберем технологии реализации grid и ttk</li>
+<li>окно имеет вид таблицы: шапка + тело таблицы</li>
+<li>«шапка»: таблицы имеет вид: товар - количество - количество дней - цена за ед. - общая цена</li>
+<li>«строка»: таблицы имеет вид: товар - количество - количество дней - цена за ед. - общая цена</li>
+<li>«подвал»: таблицы имеет вид: общие затраты в год - количество лет - всего затраты</li>
+</ol>
+<p>Примерный вид программы можно реализовать в табличном редакторе:</p>
+<img alt="скриншот" src="../../../_images/01_cat_app.png" />
+<p>Визуально создадим окно подобное следующему:</p>
+<img alt="скриншот" src="../../../_images/02_cat_app.png" />
+<p>К начальному проекту добавили кнопки, при нажатии на которые будет производиться подсчет.</p>
+</div>
+<div class="section" id="id2">
+<h2>12.2. Создание интерфейса<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Создадим окно с использованием ttk элементов:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tkinter</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tkinter.ttk</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">Tk</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Calculator for cat&#39;</span><span class="p">)</span>
+
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Для создания подписей колонок используем метку - Label() с соответствующими параметрами и разместим их используя метод - grid():</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Label</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;Товар&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Объявлять переменную и присваивать ей значение:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lbl</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>не обязательно, если в дальнейшем мы не планируем менять свойства созданной метки.</p>
+<p>Создав верхний ряд окна из меток получим следующий вид:</p>
+<img alt="скриншот" src="../../../_images/03_cat_app.png" />
+<p>Второй ряд окна состоит из 5 однострочных полей для ввода данных и кнопки для подсчета. Для визуальной отрисовки виджетов можно воспользоваться следующими строчками кода, копируя и внося в них необходимые изменения:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">entry_11</span> <span class="o">=</span> <span class="n">Entry</span><span class="p">()</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">button_1</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">count_first</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Для удобства цифры в именах переменных означают их позицию: entry_11 - 1 строчка и 1 столбец, и номера позиции поля ввода позволяют не запутаться. Кнопка одна, поэтому для неё указывается только номер строки.
+После добавления второго ряда виджетов должен получиться следующий вид окна:</p>
+<img alt="скриншот" src="../../../_images/04_cat_app.png" />
+<p>Для добавления ещё дух строчек повторим предыдущих шаг, внося необходимые изменения в код для получения следующего вида окна:</p>
+<img alt="скриншот" src="../../../_images/05_cat_app.png" />
+<p>При желании можно добавить и более количество строк.</p>
+<p>Далее добавим строки итогового подсчета сначала «Всего затраты за год», которая состоит из метки, кнопки и однострочного текстового поля:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Label</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;Всего затраты за год&quot;</span><span class="p">,</span> <span class="n">justify</span><span class="o">=</span><span class="n">RIGHT</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">columnspan</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">button_6</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">count_first</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">entry_for_year</span> <span class="o">=</span> <span class="n">Entry</span><span class="p">()</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Результат выполнения:</p>
+<img alt="скриншот" src="../../../_images/06_cat_app.png" />
+<p>В следующей строке «Количество лет» нам не потребуется кнопка, поэтому мы добавим только метку и текстовое поле.
+Последняя строчка интерфейса будет состоять из метки, кнопки «Итог» и текстового поля для вывода результата.</p>
+<p>Воспользовавшись предыдущими примерами кода и внеся необходимые изменения, должно получиться финальное окно:</p>
+<img alt="скриншот" src="../../../_images/02_cat_app.png" />
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../../index.html">Оглавление</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">12. Tkinter. Содержание котенка (часть 1)</a><ul>
+<li><a class="reference internal" href="#id1">12.1. Планирование проекта</a></li>
+<li><a class="reference internal" href="#id2">12.2. Создание интерфейса</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Предыдущий раздел</h4>
+  <p class="topless"><a href="../0110/0110.html"
+                        title="предыдущая глава">11. Tkinter. Визуализация калькулятора</a></p>
+  <h4>Следующий раздел</h4>
+  <p class="topless"><a href="../0112/0112.html"
+                        title="следующая глава">13. Tkinter. Содержание котенка (часть 2)</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Эта страница</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/python_3/01_first - tkinter&amp;basics/0111/0111.rst.txt"
+            rel="nofollow">Исходный текст</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Быстрый поиск</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Искать" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Навигация</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="Алфавитный указатель"
+             >указатель</a></li>
+        <li class="right" >
+          <a href="../0112/0112.html" title="13. Tkinter. Содержание котенка (часть 2)"
+             >вперёд</a> |</li>
+        <li class="right" >
+          <a href="../0110/0110.html" title="11. Tkinter. Визуализация калькулятора"
+             >назад</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Документация Python 3: практическое применение 0.1</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, SmartPer.
+      Создано с помощью <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.6.
+    </div>
+  </body>
+</html>

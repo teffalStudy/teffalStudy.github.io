@@ -1,0 +1,77 @@
+Python grid
+=====================================
+            
+Термины
+-------------------------------------
+
+Python grid - назначение
+-------------------------------------
+
+(для чего используется)
+
+
+Синтаксис
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+  print(<expression>)
+
+(<expression> - типы выражений которые могут быть)
+
+Пример grid 1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+  from tkinter import *
+  
+  window = Tk()
+  window.title("Welcome to grid app!")
+  window.geometry('350x200')
+  lbl = Label(window, text="Hello!")
+  btn = Button(window, text="Click Me!")
+  lbl.grid(column=0, row=0)
+  btn.grid(column=1, row=0)
+  window.mainloop()
+  
+  
+
+
+Результат выполнения:
+
+.. image:: img/01_grid.png
+  :alt: скриншот
+
+Пример grid 2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+  from tkinter import *
+  
+  window = Tk()
+  window.title("Welcome to grid app!")
+  lbl = Label(window, text="Hello!")
+  btn1 = Button(window, text="Click Me!")
+  btn2 = Button(window, text="Click Me!")
+  btn3 = Button(window, text="Click Me!")
+  btn1.grid(column=0, row=0)
+  lbl.grid(column=1, row=0)
+  btn2.grid(column=2, row=0)
+  btn3.grid(column=1, row=1)
+  window.mainloop()
+  
+  
+
+
+Результат выполнения:
+
+.. image:: img/02_grid.png
+  :alt: скриншот
+
+Упражнения
+-------------------------------------
+
+#. (задача ...)
+            

@@ -1,0 +1,273 @@
+.. include:: content/title.txt
+.. include:: content/terms.txt
+.. include:: content/theory.txt
+.. include:: content/syntax.txt
+.. include:: content/examples.txt
+.. include:: content/tasks.txt
+
+Tkinter. Текстовое поле
+#######################################
+
+Текстовые поля можно разделить на два основных типа:
+
+* однострочное - Entry()
+* многострочное - Text()
+
+Однострочное текстовое поле
+=======================================
+
+Элемент Entry представляет поле для ввода текста. Конструктор Entry принимает следующие параметры::
+
+  Entry(master, options)
+
+где master - ссылка на родительское окно, а options - набор следующих параметров:
+
+* bg: фоновый цвет
+* bd: толщина границы
+* cursor: курсор указателя мыши при наведении на текстовое поле
+* fg: цвет текста
+* font: шрифт текста
+* justify: устанавливает выравнивание текста. Значение LEFT выравнивает текст по левому краю, CENTER - по центру, RIGHT - по правому краю
+* relief: определяет тип границы, по умолчанию значение FLAT
+* selectbackground: фоновый цвет выделенного куска текста
+* selectforeground: цвет выделенного текста
+* show: задает маску для вводимых символов
+* state: состояние элемента, может принимать значения NORMAL (по умолчанию) и DISABLED
+* textvariable: устанавливает привязку к элементу StringVar
+* width: ширина элемента
+
+Пример entry 1::
+
+  from tkinter import *
+
+  window = Tk()
+  window.title("Welcome to entry app")
+  txt = Entry(window, width=10)
+  txt.pack()
+  window.mainloop()
+
+
+
+Результат выполнения:
+
+.. image:: img/01_entry.png
+  :alt: скриншот
+
+Пример entry 2::
+
+  from tkinter import *
+
+  window = Tk()
+  window.title("Welcome to the second entry app")
+  txt1 = Entry(window, width=10)
+  txt2 = Entry(window, width=10)
+  txt1.pack()
+  txt2.pack()
+  window.mainloop()
+
+
+
+Результат выполнения:
+
+.. image:: img/02_entry.png
+  :alt: скриншот
+
+Пример entry 3::
+
+  from tkinter import *
+
+  root = Tk()
+  root.title("Welcome to the second entry app")
+  lbl_login = Label(root, text="Login")
+  lbl_pass = Label(root, text="Password")
+  txt1 = Entry(root, width=10)
+  txt2 = Entry(root, width=10)
+  btn = Button(root, text="Enter")
+  lbl_login.pack()
+  txt1.pack()
+  lbl_pass.pack()
+  txt2.pack()
+  btn.pack()
+  root.mainloop()
+
+
+Результат выполнения:
+
+.. image:: img/03_entry.png
+  :alt: скриншот
+
+Пример entry 3::
+
+    from tkinter import *
+
+    def clicked():
+        lbl_welcome.configure(text="Welcome!!!")
+
+    root = Tk()
+    root.title("Welcome to the second entry app")
+    lbl_login = Label(root, text="Login")
+    lbl_pass = Label(root, text="Password")
+    lbl_welcome = Label(root)
+    txt1 = Entry(root, width=10)
+    txt2 = Entry(root, width=10)
+    btn = Button(root, text="Enter", command=clicked)
+    lbl_login.pack()
+    txt1.pack()
+    lbl_pass.pack()
+    txt2.pack()
+    btn.pack()
+    lbl_welcome.pack()
+    root.mainloop()
+
+.. image:: img/04_entry.png
+  :alt: скриншот
+
+Определим элемент Entry и по нажатию на кнопку выведем его текст в отдельное окно с сообщением::
+
+  from tkinter import *
+  from tkinter import messagebox
+
+  def show_message():
+      messagebox.showinfo("GUI Python", message.get())
+
+  root = Tk()
+  root.title("GUI на Python")
+  root.geometry("300x250")
+
+  message = StringVar()
+
+  message_entry = Entry(textvariable=message)
+  message_entry.place(relx=.5, rely=.1, anchor="c")
+
+  message_button = Button(text="Click Me", command=show_message)
+  message_button.place(relx=.5, rely=.5, anchor="c")
+
+  root.mainloop()
+
+Результат выполнения:
+
+.. image:: img/05_entry.png
+  :alt: скриншот
+
+Для вывода сообщения здесь применяется дополнительный модуль messagebox, содержащий функцию showinfo(), которая собственно и выводит введенный в текстовое поле текст. Для получения введенного текста используется комп StringVar, как было описано в одной из предыдущих тем.
+
+Теперь создадим более сложный пример с формой ввода::
+
+  from tkinter import *
+  from tkinter import messagebox
+
+
+  def display_full_name():
+      messagebox.showinfo("GUI Python", name.get() + " " + surname.get())
+
+  root = Tk()
+  root.title("GUI на Python")
+
+  name = StringVar()
+  surname = StringVar()
+
+  name_label = Label(text="Введите имя:")
+  surname_label = Label(text="Введите фамилию:")
+
+  name_label.grid(row=0, column=0, sticky="w")
+  surname_label.grid(row=1, column=0, sticky="w")
+
+  name_entry = Entry(textvariable=name)
+  surname_entry = Entry(textvariable=surname)
+
+  name_entry.grid(row=0,column=1, padx=5, pady=5)
+  surname_entry.grid(row=1,column=1, padx=5, pady=5)
+
+
+  message_button = Button(text="Click Me", command=display_full_name)
+  message_button.grid(row=2,column=1, padx=5, pady=5, sticky="e")
+
+  root.mainloop()
+
+Результат выполнения:
+
+.. image:: img/06_entry.png
+  :alt: скриншот
+
+Методы Entry
+---------------------------------------
+
+Элемент Entry имеет ряд методов. Основные из них:
+
+* insert(index, str): вставляет в текстовое поле строку по определенному индексу
+* get(): возвращает введенный в текстовое поле текст
+* delete(first, last=None): удаляет символ по индексу first. Если указан параметр last, то удаление производится до индекса last. Чтобы удалить до конца, в качестве второго параметра можно использовать значение END.
+
+Используем методы в программе::
+
+  from tkinter import *
+  from tkinter import messagebox
+
+
+  def clear():
+      name_entry.delete(0, END)
+      surname_entry.delete(0, END)
+
+
+  def display():
+      messagebox.showinfo("GUI Python", name_entry.get() + " " + surname_entry.get())
+
+  root = Tk()
+  root.title("GUI на Python")
+
+  name_label = Label(text="Введите имя:")
+  surname_label = Label(text="Введите фамилию:")
+
+  name_label.grid(row=0, column=0, sticky="w")
+  surname_label.grid(row=1, column=0, sticky="w")
+
+  name_entry = Entry()
+  surname_entry = Entry()
+
+  name_entry.grid(row=0,column=1, padx=5, pady=5)
+  surname_entry.grid(row=1,column=1, padx=5, pady=5)
+
+  # вставка начальных данных
+  name_entry.insert(0, "Tom")
+  surname_entry.insert(0, "Soyer")
+
+  display_button = Button(text="Display", command=display)
+  clear_button = Button(text="Clear", command=clear)
+
+  display_button.grid(row=2, column=0, padx=5, pady=5, sticky="e")
+  clear_button.grid(row=2, column=1, padx=5, pady=5, sticky="e")
+
+  root.mainloop()
+
+При запуске программы сразу же в оба текстовых поля добавляется текст по умолчанию::
+
+  name_entry.insert(0, "Tom")
+  surname_entry.insert(0, "Soyer")
+
+Кнопка Clear очищает оба поля, вызывая метод delete::
+
+  def clear():
+      name_entry.delete(0, END)
+      surname_entry.delete(0, END)
+
+Вторая кнопка, используя метод get, получает введенный текст::
+
+  def display():
+      messagebox.showinfo("GUI Python", name_entry.get() + " " + surname_entry.get())
+
+Причем, как видно из примера, нам необязательно обращаться к тексту в Entry через переменные типа StringVar, мы можем это сделать напрямую через метод get.
+
+Многострочное текстовое поле
+=======================================
+
+Text() предназначен для предоставления пользователю возможности ввода не одной строки текста, а существенно больше::
+
+    tex = Text(root,width=40, font="Verdana 12", wrap=WORD)
+
+Последнее свойство (wrap) в зависимости от своего значения позволяет переносить текст, вводимый пользователем либо по символам, либо по словам, либо вообще не переносить, пока пользователь не нажмет Enter.
+
+Упражнения
+-------------------------------------
+
+#. Напишите программы, описанные в уроке.
+#. Создайте пример трёх программ с использованием многострочного текстового поля.

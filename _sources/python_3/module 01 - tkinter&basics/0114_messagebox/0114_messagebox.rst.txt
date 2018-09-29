@@ -1,0 +1,100 @@
+Python messagebox
+=====================================
+            
+Термины
+-------------------------------------
+
+Python messagebox - назначение
+-------------------------------------
+
+(для чего используется)
+
+
+Синтаксис
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+  print(<expression>)
+
+(<expression> - типы выражений которые могут быть)
+
+Пример messagebox 1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+  from tkinter import *
+  
+  window = Tk()
+  window.title("Message box title")
+  window.geometry("300x75")
+  lbl = Label(window, text="My message content!")
+  btn = Button(window, text="Ok", width=10, command=window.destroy)
+  lbl.pack()
+  btn.pack(side=RIGHT)
+  window.mainloop()
+  
+  
+
+
+Результат выполнения:
+
+.. image:: img/01_messagebox.png
+  :alt: скриншот
+
+Пример messagebox 2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+  from tkinter import messagebox
+  
+  messagebox.showinfo('Message title', 'Message info content')
+  
+  
+
+
+Результат выполнения:
+
+.. image:: img/02_messagebox.png
+  :alt: скриншот
+
+Пример messagebox 3
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+  from tkinter import messagebox
+  
+  messagebox.showwarning('Message warning title', 'Message warning content')  #shows warning message
+  
+  
+
+
+Результат выполнения:
+
+.. image:: img/03_messagebox.png
+  :alt: скриншот
+
+Пример messagebox 4
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+  from tkinter import messagebox
+  
+  messagebox.showerror('Message error title', 'Message error content')    #shows error message
+  
+
+
+Результат выполнения:
+
+.. image:: img/04_messagebox.png
+  :alt: скриншот
+
+Упражнения
+-------------------------------------
+
+#. (задача ...)
+            

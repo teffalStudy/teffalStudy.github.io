@@ -1,0 +1,19 @@
+.. include:: content/title.txt
+
+
+.. include:: content/theory_str.txt
+.. include:: content/tasks_str.txt
+
+
+.. include:: content/theory_number.txt
+.. include:: content/tasks_number.txt
+
+
+.. include:: content/theory_comments.txt
+.. include:: content/tasks_comments.txt
+
+
+.. include:: content/syntax.txt
+.. include:: content/examples.txt
+.. include:: content/tasks.txt
+

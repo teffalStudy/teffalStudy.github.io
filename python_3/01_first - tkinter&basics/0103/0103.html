@@ -1,0 +1,368 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>4. Работа с датами и временем &#8212; Документация Python 3: практическое применение 0.1</title>
+    <link rel="stylesheet" href="../../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../_static/translations.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../../search.html" />
+    <link rel="next" title="5. Tkinter. Создание графического интерфейса" href="../0104/0104.html" />
+    <link rel="prev" title="3. Python типы данных" href="../0102/0102.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Навигация</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="Алфавитный указатель"
+             accesskey="I">указатель</a></li>
+        <li class="right" >
+          <a href="../0104/0104.html" title="5. Tkinter. Создание графического интерфейса"
+             accesskey="N">вперёд</a> |</li>
+        <li class="right" >
+          <a href="../0102/0102.html" title="3. Python типы данных"
+             accesskey="P">назад</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Документация Python 3: практическое применение 0.1</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="id1">
+<h1>4. Работа с датами и временем<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="section" id="datetime">
+<h2>4.1. Модуль datetime<a class="headerlink" href="#datetime" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Основной функционал для работы с датами и временем сосредоточен в модуле datetime в виде следующих классов:</p>
+<ul class="simple">
+<li>date</li>
+<li>time</li>
+<li>datetime</li>
+</ul>
+<div class="section" id="date">
+<h3>4.1.1. Класс date<a class="headerlink" href="#date" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Для работы с датами воспользуемся классом date, который определен в модуле datetime. Для создания объекта date мы можем использовать конструктор date, который последовательно принимает три параметра: год, месяц и день:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">date</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">day</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Например, создадим какую-либо дату:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datetime</span>
+
+<span class="n">yesterday</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">yesterday</span><span class="p">)</span>      <span class="c1"># 2017-05-02</span>
+</pre></div>
+</div>
+<p>Если необходимо получить текущую дату, то можно воспользоваться методом today():</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">date</span>
+
+<span class="n">today</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">today</span><span class="p">)</span>      <span class="c1"># 2017-05-03</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">.</span><span class="si">{}</span><span class="s2">.</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">today</span><span class="o">.</span><span class="n">day</span><span class="p">,</span> <span class="n">today</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">today</span><span class="o">.</span><span class="n">year</span><span class="p">))</span>      <span class="c1"># 2.5.2017</span>
+</pre></div>
+</div>
+<p>С помощью свойств day, month, year можно получить соответственно день, месяц и год.</p>
+</div>
+<div class="section" id="time">
+<h3>4.1.2. Класс time<a class="headerlink" href="#time" title="Ссылка на этот заголовок">¶</a></h3>
+<p>За работу с временем отвечает класс time. Используя его конструктор, можно создать объект времени:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">time</span><span class="p">([</span><span class="n">hour</span><span class="p">]</span> <span class="p">[,</span> <span class="nb">min</span><span class="p">]</span> <span class="p">[,</span> <span class="n">sec</span><span class="p">]</span> <span class="p">[,</span> <span class="n">microsec</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Конструктор последовательно принимает часы, минуты, секунды и микросекунды. Все параметры необязательные, и если мы какой-то параметр не передадим, то соответствующее значение будет инициализироваться нулем:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">time</span>
+
+<span class="n">current_time</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">current_time</span><span class="p">)</span>     <span class="c1"># 00:00:00</span>
+
+<span class="n">current_time</span> <span class="o">=</span> <span class="n">time</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">current_time</span><span class="p">)</span>     <span class="c1"># 16:25:00</span>
+
+<span class="n">current_time</span> <span class="o">=</span> <span class="n">time</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">45</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">current_time</span><span class="p">)</span>     <span class="c1"># 16:25:45</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>4.1.3. Класс datetime<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Класс datetime из одноименного модуля объединяет возможности работы с датой и временем. Для создания объекта datetime можно использовать следующий конструктор:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">datetime</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">day</span> <span class="p">[,</span> <span class="n">hour</span><span class="p">]</span> <span class="p">[,</span> <span class="nb">min</span><span class="p">]</span> <span class="p">[,</span> <span class="n">sec</span><span class="p">]</span> <span class="p">[,</span> <span class="n">microsec</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Первые три параметра, представляющие год, месяц и день, являются обязательными. Остальные необязательные, и если мы не укажем для них значения, то по умолчанию они инициализируются нулем:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">datetime</span>
+
+<span class="n">deadline</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">deadline</span><span class="p">)</span>     <span class="c1"># 2017-05-10 00:00:00</span>
+
+<span class="n">deadline</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">deadline</span><span class="p">)</span>     <span class="c1"># 2017-05-10 04:30:00</span>
+</pre></div>
+</div>
+<p>Для получения текущих даты и времени можно вызвать метод now():</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">datetime</span>
+
+<span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">now</span><span class="p">)</span>     <span class="c1"># 2017-05-03 11:18:56.239443</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">.</span><span class="si">{}</span><span class="s2">.</span><span class="si">{}</span><span class="s2">  </span><span class="si">{}</span><span class="s2">:</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">now</span><span class="o">.</span><span class="n">day</span><span class="p">,</span> <span class="n">now</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">now</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="n">now</span><span class="o">.</span><span class="n">hour</span><span class="p">,</span> <span class="n">now</span><span class="o">.</span><span class="n">minute</span><span class="p">))</span>  <span class="c1"># 3.5.2017  11:21</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">now</span><span class="o">.</span><span class="n">date</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">now</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>С помощью свойств day, month, year, hour, minute, second можно получить отдельные значения даты и времени. А через методы date() и time() можно получить отдельно дату и время соответственно.</p>
+</div>
+<div class="section" id="id3">
+<h3>4.1.4. Преобразование из строки в дату<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Из функциональности класса datetime следует отметить метод strptime(), который позволяет распарсить строку и преобразовать ее в дату. Этот метод принимает два параметра:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">strptime</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">format</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Первый параметр str представляет строковое определение даты и времени, а второй параметр - формат, который определяет, как различные части даты и времени расположены в этой строке.</p>
+<p>Для определения формата мы можем использовать следующие коды:</p>
+<ul class="simple">
+<li>%d: день месяца в виде числа</li>
+<li>%m: порядковый номер месяца</li>
+<li>%y: год в виде 2-х чисел</li>
+<li>%Y: год в виде 4-х чисел</li>
+<li>%H: час в 24-х часовом формате</li>
+<li>%M: минута</li>
+<li>%S: секунда</li>
+</ul>
+<p>Применим различные форматы:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">datetime</span>
+<span class="n">deadline</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="s2">&quot;22/05/2017&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">%d</span><span class="s2">/%m/%Y&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">deadline</span><span class="p">)</span>     <span class="c1"># 2017-05-22 00:00:00</span>
+
+<span class="n">deadline</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="s2">&quot;22/05/2017 12:30&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">%d</span><span class="s2">/%m/%Y %H:%M&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">deadline</span><span class="p">)</span>     <span class="c1"># 2017-05-22 12:30:00</span>
+
+<span class="n">deadline</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="s2">&quot;05-22-2017 12:30&quot;</span><span class="p">,</span> <span class="s2">&quot;%m-</span><span class="si">%d</span><span class="s2">-%Y %H:%M&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">deadline</span><span class="p">)</span>     <span class="c1"># 2017-05-22 12:30:00</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>4.2. Операции с датами<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="section" id="id5">
+<h3>4.2.1. Форматирование даты и время<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Для форматирования объектов date и time в обоих этих классах предусмотрен метод strftime(format). Этот метод принимает только один параметр, указывающий на формат, в который нужно преобразовать дату или время.</p>
+<p>Для определения формата мы можем использовать один из следующих кодов форматирования:</p>
+<ul class="simple">
+<li>%a: аббревиатура дня недели. Например, Wed - от слова Wednesday (по умолчанию используются английские наименования)</li>
+<li>%A: день недели полностью, например, Wednesday</li>
+<li>%b: аббревиатура названия месяца. Например, Oct (сокращение от October)</li>
+<li>%B: название месяца полностью, например, October</li>
+<li>%d: день месяца, дополненный нулем, например, 01</li>
+<li>%m: номер месяца, дополненный нулем, например, 05</li>
+<li>%y: год в виде 2-х чисел</li>
+<li>%Y: год в виде 4-х чисел</li>
+<li>%H: час в 24-х часовом формате, например, 13</li>
+<li>%I: час в 12-ти часовом формате, например, 01</li>
+<li>%M: минута</li>
+<li>%S: секунда</li>
+<li>%f: микросекунда</li>
+<li>%p: указатель AM/PM</li>
+<li>%c: дата и время, отформатированные под текущую локаль</li>
+<li>%x: дата, отформатированная под текущую локаль</li>
+<li>%X: время, форматированное под текущую локаль</li>
+</ul>
+<p>Используем различные форматы:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">datetime</span>
+<span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">))</span>             <span class="c1"># 2017-05-03</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">/%m/%Y&quot;</span><span class="p">))</span>             <span class="c1"># 03/05/2017</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">/%m/%y&quot;</span><span class="p">))</span>             <span class="c1"># 03/05/17</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2"> %B %Y (%A)&quot;</span><span class="p">))</span>        <span class="c1"># 03 May 2017 (Wednesday)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">/%m/%y %I:%M&quot;</span><span class="p">))</span>       <span class="c1"># 03/05/17 01:36</span>
+</pre></div>
+</div>
+<p>При выводе названий месяцев и дней недели по умолчанию используются английские наименования. Если мы хотим использовать текущую локаль, но то мы можем ее предварительно установить с помощью модуля locale:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">datetime</span>
+<span class="kn">import</span> <span class="nn">locale</span>
+<span class="n">locale</span><span class="o">.</span><span class="n">setlocale</span><span class="p">(</span><span class="n">locale</span><span class="o">.</span><span class="n">LC_ALL</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+<span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2"> %B %Y (%A)&quot;</span><span class="p">))</span>        <span class="c1"># 03 Май 2017 (среда)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h3>4.2.2. Сложение и вычитание даты и время<a class="headerlink" href="#id6" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Нередко при работе с датами возникает необходимость добавить к какой-либо дате определенный промежуток времени или, наоборот, вычесть некоторый период. И специально для таких операций в модуле datetime определен класс timedelta. Фактически этот класс определяет некоторый период времени.</p>
+<p>Для определения промежутка времени можно использовать конструктор timedelta:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">timedelta</span><span class="p">([</span><span class="n">days</span><span class="p">]</span> <span class="p">[,</span> <span class="n">seconds</span><span class="p">]</span> <span class="p">[,</span> <span class="n">microseconds</span><span class="p">]</span> <span class="p">[,</span> <span class="n">milliseconds</span><span class="p">]</span> <span class="p">[,</span> <span class="n">minutes</span><span class="p">]</span> <span class="p">[,</span> <span class="n">hours</span><span class="p">]</span> <span class="p">[,</span> <span class="n">weeks</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>В конструктор мы последовательно передаем дни, секунды, микросекунды, миллисекунды, минуты, часы и недели.</p>
+<p>Определим несколько периодов:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">timedelta</span>
+
+<span class="n">three_hours</span> <span class="o">=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">three_hours</span><span class="p">)</span>       <span class="c1"># 3:00:00</span>
+<span class="n">three_hours_thirty_minutes</span> <span class="o">=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">minutes</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>  <span class="c1"># 3:30:00</span>
+
+<span class="n">two_days</span> <span class="o">=</span> <span class="n">timedelta</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># 2 days, 0:00:00</span>
+
+<span class="n">two_days_three_hours_thirty_minutes</span> <span class="o">=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">hours</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">minutes</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>  <span class="c1"># 2 days, 3:30:00</span>
+</pre></div>
+</div>
+<p>Используя timedelta, мы можем складывать или вычитать даты. Например, получим дату, которая будет через два дня:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">timedelta</span><span class="p">,</span> <span class="n">datetime</span>
+
+<span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">now</span><span class="p">)</span>                      <span class="c1"># 2017-05-03 17:46:44.558754</span>
+<span class="n">two_days</span> <span class="o">=</span> <span class="n">timedelta</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">in_two_days</span> <span class="o">=</span> <span class="n">now</span> <span class="o">+</span> <span class="n">two_days</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">in_two_days</span><span class="p">)</span>              <span class="c1"># 2017-05-05 17:46:44.558754</span>
+</pre></div>
+</div>
+<p>Или узнаем, сколько было времени 10 часов 15 минут назад, то есть фактически нам надо вычесть из текущего времени 10 часов и 15 минут:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">timedelta</span><span class="p">,</span> <span class="n">datetime</span>
+
+<span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+<span class="n">till_ten_hours_fifteen_minutes</span> <span class="o">=</span> <span class="n">now</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">minutes</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">till_ten_hours_fifteen_minutes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="timedelta">
+<h3>4.2.3. Свойства timedelta<a class="headerlink" href="#timedelta" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Класс timedelta имеет несколько свойств, с помощью которых мы можем получить временной промежуток:</p>
+<ul class="simple">
+<li>days: возвращает количество дней</li>
+<li>seconds: возвращает количество секунд</li>
+<li>microseconds: возвращает количество микросекунд</li>
+</ul>
+<p>Кроме того, метод total_seconds() возвращает общее количество секунд, куда входят и дни, и собственно секунды, и микросекунды.</p>
+<p>Например, узнаем какой временной период между двумя датами:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">timedelta</span><span class="p">,</span> <span class="n">datetime</span>
+
+<span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+<span class="n">twenty_two_may</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">22</span><span class="p">)</span>
+<span class="n">period</span> <span class="o">=</span> <span class="n">twenty_two_may</span> <span class="o">-</span> <span class="n">now</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> дней  </span><span class="si">{}</span><span class="s2"> секунд   </span><span class="si">{}</span><span class="s2"> микросекунд&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">period</span><span class="o">.</span><span class="n">days</span><span class="p">,</span> <span class="n">period</span><span class="o">.</span><span class="n">seconds</span><span class="p">,</span> <span class="n">period</span><span class="o">.</span><span class="n">microseconds</span><span class="p">))</span>
+<span class="c1"># 18 дней  17537 секунд   72765 микросекунд</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Всего: </span><span class="si">{}</span><span class="s2"> секунд&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">period</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()))</span>
+<span class="c1"># Всего: 1572737.072765 секунд</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h3>4.2.4. Сравнение дат<a class="headerlink" href="#id7" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Также как и строки числа и даты можно сравнивать с помощью стандартных операторов сравнения:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">datetime</span>
+
+<span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+<span class="n">deadline</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">22</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">now</span> <span class="o">&gt;</span> <span class="n">deadline</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Срок сдачи проекта прошел&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">now</span><span class="o">.</span><span class="n">day</span> <span class="o">==</span> <span class="n">deadline</span><span class="o">.</span><span class="n">day</span> <span class="ow">and</span> <span class="n">now</span><span class="o">.</span><span class="n">month</span> <span class="o">==</span> <span class="n">deadline</span><span class="o">.</span><span class="n">month</span> <span class="ow">and</span> <span class="n">now</span><span class="o">.</span><span class="n">year</span> <span class="o">==</span> <span class="n">deadline</span><span class="o">.</span><span class="n">year</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Срок сдачи проекта сегодня&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">period</span> <span class="o">=</span> <span class="n">deadline</span> <span class="o">-</span> <span class="n">now</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Осталось </span><span class="si">{}</span><span class="s2"> дней&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">period</span><span class="o">.</span><span class="n">days</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h3>4.2.5. Упражнения<a class="headerlink" href="#id8" title="Ссылка на этот заголовок">¶</a></h3>
+<ol class="arabic simple">
+<li>Используя примеры программ: напишите программу, которая вычисляет сколько месяцев назад вы пошли в школу.</li>
+<li>Используя примеры программ: напишите программу, которая вычисляет сколько дней вам осталось до окончания школы.</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../../index.html">Оглавление</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">4. Работа с датами и временем</a><ul>
+<li><a class="reference internal" href="#datetime">4.1. Модуль datetime</a><ul>
+<li><a class="reference internal" href="#date">4.1.1. Класс date</a></li>
+<li><a class="reference internal" href="#time">4.1.2. Класс time</a></li>
+<li><a class="reference internal" href="#id2">4.1.3. Класс datetime</a></li>
+<li><a class="reference internal" href="#id3">4.1.4. Преобразование из строки в дату</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id4">4.2. Операции с датами</a><ul>
+<li><a class="reference internal" href="#id5">4.2.1. Форматирование даты и время</a></li>
+<li><a class="reference internal" href="#id6">4.2.2. Сложение и вычитание даты и время</a></li>
+<li><a class="reference internal" href="#timedelta">4.2.3. Свойства timedelta</a></li>
+<li><a class="reference internal" href="#id7">4.2.4. Сравнение дат</a></li>
+<li><a class="reference internal" href="#id8">4.2.5. Упражнения</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Предыдущий раздел</h4>
+  <p class="topless"><a href="../0102/0102.html"
+                        title="предыдущая глава">3. Python типы данных</a></p>
+  <h4>Следующий раздел</h4>
+  <p class="topless"><a href="../0104/0104.html"
+                        title="следующая глава">5. Tkinter. Создание графического интерфейса</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Эта страница</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/python_3/01_first - tkinter&amp;basics/0103/0103.rst.txt"
+            rel="nofollow">Исходный текст</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Быстрый поиск</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Искать" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Навигация</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="Алфавитный указатель"
+             >указатель</a></li>
+        <li class="right" >
+          <a href="../0104/0104.html" title="5. Tkinter. Создание графического интерфейса"
+             >вперёд</a> |</li>
+        <li class="right" >
+          <a href="../0102/0102.html" title="3. Python типы данных"
+             >назад</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Документация Python 3: практическое применение 0.1</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, SmartPer.
+      Создано с помощью <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.6.
+    </div>
+  </body>
+</html>

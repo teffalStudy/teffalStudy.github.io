@@ -1,0 +1,214 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>11. Tkinter. Визуализация калькулятора &#8212; Документация Python 3: практическое применение 0.1</title>
+    <link rel="stylesheet" href="../../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../_static/translations.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../../search.html" />
+    <link rel="next" title="12. Tkinter. Содержание котенка (часть 1)" href="../0111/0111.html" />
+    <link rel="prev" title="10. Tkinter. Сложное позиционирование" href="../0109/0109.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Навигация</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="Алфавитный указатель"
+             accesskey="I">указатель</a></li>
+        <li class="right" >
+          <a href="../0111/0111.html" title="12. Tkinter. Содержание котенка (часть 1)"
+             accesskey="N">вперёд</a> |</li>
+        <li class="right" >
+          <a href="../0109/0109.html" title="10. Tkinter. Сложное позиционирование"
+             accesskey="P">назад</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Документация Python 3: практическое применение 0.1</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="tkinter">
+<h1>11. Tkinter. Визуализация калькулятора<a class="headerlink" href="#tkinter" title="Ссылка на этот заголовок">¶</a></h1>
+<p>На этом занятии создадим три визуальных представления калькулятора, используя отдельно три разных типа разметки: pack(), place(), grid().
+Создадим окно:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tkinter</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">Tk</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Calculator&quot;</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>По желанию можно задать размер и запретить изменение размеров окна, добавив соответствую строку:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">root</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s2">&quot;400x300&quot;</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">resizable</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="pack">
+<h2>11.1. Метод - pack()<a class="headerlink" href="#pack" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Создадим в окне визуальный элемент однострочное текстовое поле:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">num</span> <span class="o">=</span> <span class="n">StringVar</span><span class="p">()</span> <span class="c1"># создадим переменную для отображения значений на табло калькулятора</span>
+<span class="n">num</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>        <span class="c1"># установим значение переменной равное 0</span>
+<span class="n">lbl</span> <span class="o">=</span> <span class="n">Entry</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">num</span><span class="p">,</span> <span class="n">justify</span><span class="o">=</span><span class="n">RIGHT</span><span class="p">)</span>
+<span class="n">lbl</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Для краткости кода можно подобный текста писать в одну строчку:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lbl</span> <span class="o">=</span> <span class="n">Entry</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">num</span><span class="p">,</span> <span class="n">justify</span><span class="o">=</span><span class="n">RIGHT</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Результат выполнения:</p>
+<img alt="скриншот" src="../../../_images/01_calc.png" />
+<p>Теперь создадим кнопку добавив следующий код:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">btn1</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="n">LEFT</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Результат выполнения:</p>
+<img alt="скриншот" src="../../../_images/02_calc.png" />
+<p>Добавим другие необходимые кнопки и получим следующий вид нашего калькулятора:</p>
+<img alt="скриншот" src="../../../_images/03_calc.png" />
+<p>Разместим кнопки в три ряда. Для этого нам нужно воспользоваться вспомогательным виджетом Frame().
+Для наглядности визуализации использую LabelFrame(). Важно соблюдать правильный порядок создания и размещения элементов!
+Логика создания элементов следующая:</p>
+<ul class="simple">
+<li>создаем рамку;</li>
+<li>создаем виджеты, которые будем хранить в нашей рамке и размещаем их в ней указав имя переменной, нашей рамки и упаковав виджет</li>
+<li>пакуем нашу рамку в окно</li>
+</ul>
+<p>Код может выглядеть так:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tkinter</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">Tk</span><span class="p">()</span>
+<span class="n">lf1</span> <span class="o">=</span> <span class="n">LabelFrame</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;1 ряд&quot;</span><span class="p">)</span>
+<span class="n">lbl</span> <span class="o">=</span> <span class="n">Entry</span><span class="p">(</span><span class="n">lf1</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+<span class="n">lf1</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Результат выполнения:</p>
+<img alt="скриншот" src="../../../_images/04_calc.png" />
+<p>После преобразования разметки с использованием рамки - LabelFrame() калькулятор должен иметь вид подобный следующему:</p>
+<img alt="скриншот" src="../../../_images/05_calc.png" />
+<p>При использовании Frame() - рамки без подписей, виджеты должны просто располагаться рядами: вплотную друг к другу.</p>
+</div>
+<div class="section" id="place">
+<h2>11.2. Метод - place()<a class="headerlink" href="#place" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Используя метод place - места для размещения виджетов в окне достаточно указать абсолютное значение положения виджета от верхнего левого угла окна.</p>
+<p>Пример кода может быть таким:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">btn1</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">place</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>где x - расстояние горизонтали, а y - по вертикали.</p>
+<p>Если смещение задать по 50 пикселей, то созданное окно может иметь вид:</p>
+<img alt="скриншот" src="../../../_images/06_calc.png" />
+</div>
+<div class="section" id="grid">
+<h2>11.3. Метод - grid()<a class="headerlink" href="#grid" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Grid - сетка, может являть наиболее удобным для создания сложных интерфейсов, т.к. проще в реализации, понимании и масштабируемости.</p>
+<p>Пример кода с необходимыми атрибутами для решения задачи:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">txtDisplay</span> <span class="o">=</span> <span class="n">Entry</span><span class="p">(</span><span class="n">textvariable</span><span class="o">=</span><span class="n">num</span><span class="p">,</span> <span class="n">justify</span><span class="o">=</span><span class="n">RIGHT</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">columnspan</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="n">NSEW</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>При правильной полной реализации написания интерфейса результат может быть:</p>
+<img alt="скриншот" src="../../../_images/07_calc.png" />
+</div>
+<div class="section" id="id1">
+<h2>11.4. Современная визуализация<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h2>
+<p>ttk (themed tk) - это расширение tk с новым набором виджетов. В ttk используется новый движок для создания виджетов. Этот движок обладает поддержкой тем и стилей оформления. Благодаря этому виджеты ttk выглядят более естественно в различных операционных системах.</p>
+<p>Начиная с версий python 2.7 и 3.1.2 в Tkinter включён модуль для работы с ttk.</p>
+<p>В ttk включены следующие виджеты, которые можно использовать вместо соответствующих виджетов tk: Button, Checkbutton, Entry, Frame, Label, LabelFrame, Menubutton, PanedWindow, Radiobutton, Scale и Scrollbar. Кроме того имеется несколько новых виджетов: Combobox, Notebook, Progressbar, Separator, Sizegrip и Treeview.</p>
+<p>Чтобы переопределить основные виджеты Tk, импорт ttk должен следовать за импортом Tk:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tkinter</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tkinter.ttk</span> <span class="k">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+<p>Добавьте данные строки во все решения ваших калькуляторов и обратите внимания как измениться их внешний вид.</p>
+<p>Вид калькулятора с методом pack и виджетами ttk:</p>
+<img alt="скриншот" src="../../../_images/08_calc_ttk.png" />
+<p>Вид калькулятора с методом place и виджетами ttk:</p>
+<img alt="скриншот" src="../../../_images/09_calc_ttk.png" />
+<p>Как мы видим после применения метода абсолютного позиционирования, проявляется основной недостаток: проблема масштабирования.</p>
+<p>Вид калькулятора с методом grid и виджетами ttk:</p>
+<img alt="скриншот" src="../../../_images/10_calc_ttk.png" />
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../../index.html">Оглавление</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">11. Tkinter. Визуализация калькулятора</a><ul>
+<li><a class="reference internal" href="#pack">11.1. Метод - pack()</a></li>
+<li><a class="reference internal" href="#place">11.2. Метод - place()</a></li>
+<li><a class="reference internal" href="#grid">11.3. Метод - grid()</a></li>
+<li><a class="reference internal" href="#id1">11.4. Современная визуализация</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Предыдущий раздел</h4>
+  <p class="topless"><a href="../0109/0109.html"
+                        title="предыдущая глава">10. Tkinter. Сложное позиционирование</a></p>
+  <h4>Следующий раздел</h4>
+  <p class="topless"><a href="../0111/0111.html"
+                        title="следующая глава">12. Tkinter. Содержание котенка (часть 1)</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Эта страница</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/python_3/01_first - tkinter&amp;basics/0110/0110.rst.txt"
+            rel="nofollow">Исходный текст</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Быстрый поиск</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Искать" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Навигация</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="Алфавитный указатель"
+             >указатель</a></li>
+        <li class="right" >
+          <a href="../0111/0111.html" title="12. Tkinter. Содержание котенка (часть 1)"
+             >вперёд</a> |</li>
+        <li class="right" >
+          <a href="../0109/0109.html" title="10. Tkinter. Сложное позиционирование"
+             >назад</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Документация Python 3: практическое применение 0.1</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, SmartPer.
+      Создано с помощью <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.6.
+    </div>
+  </body>
+</html>

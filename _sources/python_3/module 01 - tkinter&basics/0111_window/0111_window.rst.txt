@@ -1,0 +1,67 @@
+Python window
+=====================================
+            
+Термины
+-------------------------------------
+
+Python window - назначение
+-------------------------------------
+
+(для чего используется)
+
+
+Синтаксис
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+  print(<expression>)
+
+(<expression> - типы выражений которые могут быть)
+
+Пример window 1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+  from tkinter import *
+  
+  root = Tk()
+  '''
+  any code
+  '''
+  root.mainloop()
+  
+  
+
+
+Результат выполнения:
+
+.. image:: img/01_window.png
+  :alt: скриншот
+
+Пример window 2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+  from tkinter import *
+  
+  root = Tk()
+  root.title('My first window title')
+  root.geometry('350x200')
+  root.mainloop()
+  
+  
+
+
+Результат выполнения:
+
+.. image:: img/02_window.png
+  :alt: скриншот
+
+Упражнения
+-------------------------------------
+
+#. (задача ...)
+            

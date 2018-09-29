@@ -1,0 +1,112 @@
+Python label
+=====================================
+            
+Термины
+-------------------------------------
+
+Python label - назначение
+-------------------------------------
+
+(для чего используется)
+
+
+Синтаксис
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+  print(<expression>)
+
+(<expression> - типы выражений которые могут быть)
+
+Пример label 1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+  from tkinter import *
+  
+  root = Tk()
+  lbl = Label(root, text="This text wrote in the first label!")
+  lbl.pack()
+  root.mainloop()
+  
+  
+
+
+Результат выполнения:
+
+.. image:: img/01_label.png
+  :alt: скриншот
+
+Пример label 2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+  from tkinter import *
+  
+  root = Tk()
+  lbl = Label(root, text="This text wrote in the first label!")
+  lbl2 = Label(root, text="This text wrote in the second label!")
+  lbl.pack()
+  lbl2.pack()
+  root.mainloop()
+  
+  
+
+
+Результат выполнения:
+
+.. image:: img/02_label.png
+  :alt: скриншот
+
+Пример label 3
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+  from tkinter import *
+  
+  root = Tk()
+  lbl = Label(root, text="Hello", font=("Arial Bold", 50), bg="lightgreen")
+  lbl.pack()
+  root.mainloop()
+  
+  
+
+
+Результат выполнения:
+
+.. image:: img/03_label.png
+  :alt: скриншот
+
+Пример label 4
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+  from tkinter import *
+  
+  root = Tk()
+  root.title('My second window title')
+  lbl = Label(root, text="This text wrote in the first label!")
+  lbl2 = Label(root, text="Hello", font=("Arial Bold", 50), bg="lightgreen")
+  lbl.pack()
+  lbl2.pack(side=BOTTOM)
+  root.mainloop()
+  
+  
+  
+
+
+Результат выполнения:
+
+.. image:: img/04_label.png
+  :alt: скриншот
+
+Упражнения
+-------------------------------------
+
+#. (задача ...)
+            

@@ -1,0 +1,192 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>6. Tkinter. Диалоговые окна &#8212; Документация Python 3: практическое применение 0.1</title>
+    <link rel="stylesheet" href="../../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../_static/translations.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../../search.html" />
+    <link rel="next" title="7. Tkinter. Текстовое поле" href="../0106/0106.html" />
+    <link rel="prev" title="5. Tkinter. Создание графического интерфейса" href="../0104/0104.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Навигация</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="Алфавитный указатель"
+             accesskey="I">указатель</a></li>
+        <li class="right" >
+          <a href="../0106/0106.html" title="7. Tkinter. Текстовое поле"
+             accesskey="N">вперёд</a> |</li>
+        <li class="right" >
+          <a href="../0104/0104.html" title="5. Tkinter. Создание графического интерфейса"
+             accesskey="P">назад</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Документация Python 3: практическое применение 0.1</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="tkinter">
+<h1>6. Tkinter. Диалоговые окна<a class="headerlink" href="#tkinter" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="section" id="id1">
+<h2>6.1. Создание диалогового окна<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Диалоговые окна, как элементы графического интерфейса, предназначены для вывода сообщений пользователю, получения от него какой-либо информации, а также управления.</p>
+<p>Создадим свое диалоговое окно. Для примера оно создается используя несколько виджетов:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tkinter</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">window</span> <span class="o">=</span> <span class="n">Tk</span><span class="p">()</span>
+<span class="n">window</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Message box title&quot;</span><span class="p">)</span>
+<span class="n">window</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s2">&quot;300x75&quot;</span><span class="p">)</span>
+<span class="n">lbl</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">window</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;My message content!&quot;</span><span class="p">)</span>
+<span class="n">btn</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="n">window</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Ok&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">window</span><span class="o">.</span><span class="n">destroy</span><span class="p">)</span>
+<span class="n">lbl</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+<span class="n">btn</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="n">RIGHT</span><span class="p">)</span>
+<span class="n">window</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Результат выполнения:</p>
+<img alt="скриншот" src="../../../_images/01_messagebox.png" />
+<p>Мы получили простейшее диалоговое окно, и хотя диалоговые окна весьма разнообразны, их вид уже устоялся.
+Нет необходимости создавать диалоговые окна с нуля, для это можно использовать «заготовки».</p>
+</div>
+<div class="section" id="messagebox">
+<h2>6.2. Messagebox - окно с информацией<a class="headerlink" href="#messagebox" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Для информирования пользователя о процессах происходящих в ПК можно использовать Messagebox - окно с информацией. При этом
+требуется дополнительно импортировать «подмодуль» Tkinter - tkinter messagbox, в котором описаны классы для окон данного типа.</p>
+<p>Код созданного информационного окна может быть следующим:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tkinter</span> <span class="k">import</span> <span class="n">messagebox</span>
+
+<span class="n">messagebox</span><span class="o">.</span><span class="n">showinfo</span><span class="p">(</span><span class="s1">&#39;Message title&#39;</span><span class="p">,</span> <span class="s1">&#39;Message info content&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Результат выполнения:</p>
+<img alt="скриншот" src="../../../_images/02_messagebox.png" />
+<p>Для привлечения внимания можно использовать окно предупреждения:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tkinter</span> <span class="k">import</span> <span class="n">messagebox</span>
+
+<span class="n">messagebox</span><span class="o">.</span><span class="n">showwarning</span><span class="p">(</span><span class="s1">&#39;Message warning title&#39;</span><span class="p">,</span> <span class="s1">&#39;Message warning content&#39;</span><span class="p">)</span>  <span class="c1">#shows warning message</span>
+</pre></div>
+</div>
+<p>Результат выполнения:</p>
+<img alt="скриншот" src="../../../_images/03_messagebox.png" />
+<p>Окно с возникшей ошибкой ПО думаю встречал каждый, на питоне его можно создать, написав следующий код:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tkinter</span> <span class="k">import</span> <span class="n">messagebox</span>
+
+<span class="n">messagebox</span><span class="o">.</span><span class="n">showerror</span><span class="p">(</span><span class="s1">&#39;Message error title&#39;</span><span class="p">,</span> <span class="s1">&#39;Message error content&#39;</span><span class="p">)</span>    <span class="c1">#shows error message</span>
+</pre></div>
+</div>
+<p>Результат выполнения:</p>
+<img alt="скриншот" src="../../../_images/04_messagebox.png" />
+</div>
+<div class="section" id="id2">
+<h2>6.3. Messagebox - окно с вопросом<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Следующие примеры диалоговых окон, служат для ведения диалога с пользователем и сохранением его ответа в переменной. Попробуйте создать следующие примеры диалоговых окон, подумайте об их различий и где они могут применяться?
+Напишите комментарий в коде к каждому диалоговому окну:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tkinter</span> <span class="k">import</span> <span class="n">messagebox</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">messagebox</span><span class="o">.</span><span class="n">askquestion</span><span class="p">(</span><span class="s1">&#39;Message title&#39;</span><span class="p">,</span> <span class="s1">&#39;Message ask content&#39;</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">messagebox</span><span class="o">.</span><span class="n">askyesno</span><span class="p">(</span><span class="s1">&#39;Message title&#39;</span><span class="p">,</span> <span class="s1">&#39;Message y/n content&#39;</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">messagebox</span><span class="o">.</span><span class="n">askyesnocancel</span><span class="p">(</span><span class="s1">&#39;Message title&#39;</span><span class="p">,</span> <span class="s1">&#39;Message y/n/cancel content&#39;</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">messagebox</span><span class="o">.</span><span class="n">askokcancel</span><span class="p">(</span><span class="s1">&#39;Message title&#39;</span><span class="p">,</span> <span class="s1">&#39;Message ok/cancel content&#39;</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">messagebox</span><span class="o">.</span><span class="n">askretrycancel</span><span class="p">(</span><span class="s1">&#39;Message title&#39;</span><span class="p">,</span> <span class="s1">&#39;Message retry/cancel content&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>6.4. Окна открытия и сохранения файлов<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Рассмотрим, как запрограммировать с помощью Tkinter вызов диалоговых окон открытия и сохранения файлов и работу с ними. При этом требуется дополнительно импортировать «подмодуль» Tkinter - tkinter.filedialog, в котором описаны классы для окон данного типа:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tkinter</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tkinter.filedialog</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">Tk</span><span class="p">()</span>
+<span class="n">op</span> <span class="o">=</span> <span class="n">askopenfilename</span><span class="p">()</span>
+<span class="n">sa</span> <span class="o">=</span> <span class="n">asksaveasfilename</span><span class="p">()</span>
+
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Здесь создаются два объекта (op и sa): один вызывает диалоговое окно «Открыть», а другой «Сохранить как…». При выполнении скрипта, они друг за другом выводятся на экран после появления главного окна. Если не создать root, то оно все-равно появится на экране, однако при попытке его закрытия в конце возникнет ошибка.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../../index.html">Оглавление</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">6. Tkinter. Диалоговые окна</a><ul>
+<li><a class="reference internal" href="#id1">6.1. Создание диалогового окна</a></li>
+<li><a class="reference internal" href="#messagebox">6.2. Messagebox - окно с информацией</a></li>
+<li><a class="reference internal" href="#id2">6.3. Messagebox - окно с вопросом</a></li>
+<li><a class="reference internal" href="#id3">6.4. Окна открытия и сохранения файлов</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Предыдущий раздел</h4>
+  <p class="topless"><a href="../0104/0104.html"
+                        title="предыдущая глава">5. Tkinter. Создание графического интерфейса</a></p>
+  <h4>Следующий раздел</h4>
+  <p class="topless"><a href="../0106/0106.html"
+                        title="следующая глава">7. Tkinter. Текстовое поле</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Эта страница</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/python_3/01_first - tkinter&amp;basics/0105/0105.rst.txt"
+            rel="nofollow">Исходный текст</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Быстрый поиск</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Искать" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Навигация</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="Алфавитный указатель"
+             >указатель</a></li>
+        <li class="right" >
+          <a href="../0106/0106.html" title="7. Tkinter. Текстовое поле"
+             >вперёд</a> |</li>
+        <li class="right" >
+          <a href="../0104/0104.html" title="5. Tkinter. Создание графического интерфейса"
+             >назад</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Документация Python 3: практическое применение 0.1</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, SmartPer.
+      Создано с помощью <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.6.
+    </div>
+  </body>
+</html>

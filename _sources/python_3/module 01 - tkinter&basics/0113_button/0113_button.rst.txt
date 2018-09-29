@@ -1,0 +1,66 @@
+Python button
+=====================================
+            
+Термины
+-------------------------------------
+
+Python button - назначение
+-------------------------------------
+
+(для чего используется)
+
+
+Синтаксис
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+  print(<expression>)
+
+(<expression> - типы выражений которые могут быть)
+
+Пример button 1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+  from tkinter import *
+  
+  root = Tk()
+  btn = Button(root, text="Click me!")
+  btn.pack()
+  root.mainloop()
+  
+  
+
+
+Результат выполнения:
+
+.. image:: img/01_button.png
+  :alt: скриншот
+
+Пример button 2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+  from tkinter import *
+  
+  root = Tk()
+  btn = Button(root, text="Click me!", fg="red", bg="yellow")
+  btn.pack()
+  root.mainloop()
+  
+  
+
+
+Результат выполнения:
+
+.. image:: img/02_button.png
+  :alt: скриншот
+
+Упражнения
+-------------------------------------
+
+#. (задача ...)
+            

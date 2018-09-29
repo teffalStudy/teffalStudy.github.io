@@ -1,0 +1,325 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>2. Python начало &#8212; Документация Python 3: практическое применение 0.1</title>
+    <link rel="stylesheet" href="../../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../_static/translations.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../../search.html" />
+    <link rel="next" title="3. Python типы данных" href="../0102/0102.html" />
+    <link rel="prev" title="1. Почему Python?" href="../0100_master-class/0100_master-class.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Навигация</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="Алфавитный указатель"
+             accesskey="I">указатель</a></li>
+        <li class="right" >
+          <a href="../0102/0102.html" title="3. Python типы данных"
+             accesskey="N">вперёд</a> |</li>
+        <li class="right" >
+          <a href="../0100_master-class/0100_master-class.html" title="1. Почему Python?"
+             accesskey="P">назад</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Документация Python 3: практическое применение 0.1</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="python">
+<h1>2. Python начало<a class="headerlink" href="#python" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="section" id="id1">
+<h2>2.1. Установка Python<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Python существует в нескольких разных версиях, с разными вариантами конфигурации в каждой операционной системе. Это приложение пригодится вам в том случае, если описание из главы 1 не сработало или вы захотите установить другую версию Python вместо той, которая поставлялась с вашей системой.</p>
+<div class="section" id="python-windows">
+<h3>2.1.1. Python в Windows<a class="headerlink" href="#python-windows" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Python обычно не включается в установку Windows по умолчанию, и все же вам стоит проверить, присутствует ли Python в вашей системе. Также можно открыть окно командой меню Пуск (Start). В открывшемся терминальном окне введите команду:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">--</span><span class="n">version</span>
+</pre></div>
+</div>
+<p>Если вы получили подобный результат:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Python</span> <span class="mf">3.6</span><span class="o">.</span><span class="mi">5</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p>значит, язык Python уже установлен в вашей системе (хотя вы, возможно, захотите установить более новую версию). Если вы получите сообщение об ошибке, то вы должны загрузить и установить Python.</p>
+</div>
+<div class="section" id="python-3-windows">
+<h3>2.1.2. Установка Python 3 в Windows<a class="headerlink" href="#python-3-windows" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Откройте страницу <a class="reference external" href="http://python.org/downloads/">http://python.org/downloads/</a>, щелкните на кнопке Download Python.</p>
+<img alt="*скрин сайта*" src="../../../_images/download_python_3.7.0.png" />
+<p>После скачивания запустите программу установки. В окне настройки установки нужно установить флажок «Add Python to PATH». Это необходимо для дальнейшего удобства запуска Python программ.</p>
+<img alt="*add_Python_3.5_path*" src="../../../_images/add_Python_3.5_path.png" />
+<p>После установки можно ещё раз проверить какая версия Python установилась. Напечатав в командной строке виндос команду, которая вам уже знакома:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">python</span> <span class="o">--</span><span class="n">version</span>
+</pre></div>
+</div>
+<p>Если вы получили подобный результат:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Python</span> <span class="mf">3.6</span><span class="o">.</span><span class="mi">5</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p>значит, язык Python уже установлен в вашей системе.</p>
+</div>
+<div class="section" id="id2">
+<h3>2.1.3. Редакторы кода<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Программисты проводят много времени за написанием, чтением и редактированием кода. Очень важно, чтобы в используемом текстовом редакторе эта работа выполнялась по возможности эффективно. Эффективный редактор должен выделять структуру кода, чтобы вы могли обнаружить типичные ошибки во время работы. Также редактор должен поддерживать автоматическую расстановку отступов, маркеры для обозначения длины строки и комбинации клавиш для часто выполняемых операций.</p>
+<p>Начинающему программисту рекомендуется использовать редактор, который поддерживает все эти функции, но не создает проблем на начальном этапе. Также желательно кое-что знать о более сложных редакторах, чтобы вы понимали, в какой момент можно задуматься над переходом.</p>
+<div class="section" id="idle">
+<h4>2.1.3.1. IDLE<a class="headerlink" href="#idle" title="Ссылка на этот заголовок">¶</a></h4>
+<p>Это редактор, который поставляется с Python по умолчанию. Запустить данный редактор можно выполнив следующие команды для windows:</p>
+<ol class="arabic simple">
+<li>нажмите на клавиатуре кнопку win (вместо надписи может быть изображение окошка) кнопка находиться в левом нижнем углу клавиатуры вторая слева от пробела.</li>
+<li>печатаем на клавиатуре слово: idle</li>
+<li>нажимаем Enter</li>
+</ol>
+<p>Если все выполнили правильно вы увидите подобное окно:</p>
+<img alt="*python3.6.3.idle.png*" src="../../../_images/python3.6.3.idle.png" />
+<p>Попробуйте в данном редакторе написать и запустить следующие программы:</p>
+<ol class="arabic simple">
+<li>Напишите программу, которая выводит в консоль надпись: «Hello world!».</li>
+<li>Напишите программу, которая выводит в консоль надпись: «Hello moon!». Изначально выводимая фраза должна храниться в переменной с именем: text.</li>
+</ol>
+<p>Если всё выполнено правильно, то вы можете увидеть подобный результат:</p>
+<img alt="*python3.6.5.idle_hello_world.png*" src="../../../_images/python3.6.5.idle_hello_world.png" />
+</div>
+<div class="section" id="pycharm">
+<h4>2.1.3.2. PyCharm<a class="headerlink" href="#pycharm" title="Ссылка на этот заголовок">¶</a></h4>
+<p>Удобный бесплатный редактор который используется большим числом питон программистов.
+Скачать его можно на сайте <a class="reference external" href="https://www.jetbrains.com/pycharm/download/#section=windows">https://www.jetbrains.com/pycharm/download/#section=windows</a></p>
+<p>Комъюнити версия является бесплатной версией.</p>
+<img alt="*download_PyCharm.png*" src="../../../_images/download_PyCharm.png" />
+<p>PyCharm - это полноценная среда разработки, поддерживающая несколько языков программирования и включает в себя ряд полезных инструментов, о которых вы будете узнавать по мере профессионального роста.</p>
+<p>Интерфейс программы PyCharm может выглядеть следующим образом.</p>
+<img alt="*PyCharm.png*" src="../../../_images/PyCharm.png" />
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>2.2. Приложения на Python<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="section" id="id4">
+<h3>2.2.1. Термины<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h3>
+<div class="line-block">
+<div class="line"><strong>GUI</strong> - графические пользовательские интерфейсы.</div>
+<div class="line"><strong>IDE</strong> - интегрированная среда разработки программ.</div>
+<div class="line"><strong>IDLE</strong> - интегрированная среда разработки программ встроенная в python.</div>
+<div class="line"><strong>app</strong> - сокращение от английского слова application - приложением.</div>
+<div class="line"><strong>Приложение</strong> - программа, на профессиональном сленге называют приложением.</div>
+</div>
+</div>
+<div class="section" id="id5">
+<h3>2.2.2. Типы приложений<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Условно приложения (программы) можно разделить несколько типов:</p>
+<ul class="simple">
+<li>консольные приложения - для работы с которыми работают, как правило, в режиме командной строки.</li>
+<li>десктоп приложеня - программы, которые мы запускаем в виндосе: калькулятор, текстовый редактор, браузер и т.п.</li>
+<li>мобильные приложения - программы, написанные и используемые на смартфонах.</li>
+<li>веб-приложения - программа, которая запускается в виндосе, но для работы ей необходимо подключение к Интернету, для обмена данными. Яркими примерами могут являться различные онлайн игры.</li>
+</ul>
+<p>На питоне можно создавать приложения любых типов. И ограничения которые вы можете встретить в будущем скорее всего будут связаны либо с ограниченностью знаний или удобством разработки.</p>
+</div>
+</div>
+<div class="section" id="python-print">
+<h2>2.3. Python «print()» и именование переменных<a class="headerlink" href="#python-print" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="section" id="id6">
+<h3>2.3.1. Термины<a class="headerlink" href="#id6" title="Ссылка на этот заголовок">¶</a></h3>
+<div class="line-block">
+<div class="line"><strong>консольное приложение</strong> - программа, которая выполняется в режиме командной строки и/или выводит результат в консоль.</div>
+<div class="line"><strong>print</strong> - печать</div>
+<div class="line"><strong>expression</strong> - выражение</div>
+</div>
+</div>
+<div class="section" id="id7">
+<h3>2.3.2. Python «print()» - назначение<a class="headerlink" href="#id7" title="Ссылка на этот заголовок">¶</a></h3>
+<p>print() - данная команда используется для вывода текста в консоль. Также её удобно использовать для отладки приложений: поиска ошибок и проверки логики программы.</p>
+<div class="section" id="id8">
+<h4>2.3.2.1. Синтаксис<a class="headerlink" href="#id8" title="Ссылка на этот заголовок">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="o">&lt;</span><span class="n">expression</span><span class="o">&gt;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>&lt;expression&gt; - выражения, которые стоят внутри круглых скобок, будут выведены на экран.</p>
+<p>Выражения могут иметь вид:</p>
+<ul class="simple">
+<li>строки или строчного выражения;</li>
+<li>математического выражения;</li>
+<li>переменной;</li>
+<li>а также любой комбинацией упомянутых выражений.</li>
+</ul>
+</div>
+<div class="section" id="id9">
+<h4>2.3.2.2. Пример 1<a class="headerlink" href="#id9" title="Ссылка на этот заголовок">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;Hello!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Результат выполнения:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Hello!
+</pre></div>
+</div>
+</div>
+<div class="section" id="id10">
+<h4>2.3.2.3. Пример 2<a class="headerlink" href="#id10" title="Ссылка на этот заголовок">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="mi">2</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Результат выполнения:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">6</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id11">
+<h4>2.3.2.4. Пример 3<a class="headerlink" href="#id11" title="Ссылка на этот заголовок">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;Hello Python world!&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Результат выполнения:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Hello Python world!
+</pre></div>
+</div>
+</div>
+<div class="section" id="id12">
+<h4>2.3.2.5. Пример 4<a class="headerlink" href="#id12" title="Ссылка на этот заголовок">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;Hi&quot;</span>
+<span class="n">number</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="k">print</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;+&#39;</span><span class="p">,</span> <span class="n">number</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Результат выполнения:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Hi</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id13">
+<h3>2.3.3. Выбор имён переменных<a class="headerlink" href="#id13" title="Ссылка на этот заголовок">¶</a></h3>
+<p>При работе с переменными в языке Python необходимо соблюдать некоторые правила и рекомендации. Нарушение правил приведет к ошибке; рекомендации всего лишь помогают писать более понятный и удобочитаемый код. Работая с переменными, помните о следующем:</p>
+<ul class="simple">
+<li>Имена переменных могут состоять только из букв, цифр и символов подчеркивания. Они могут начинаться с буквы или символа подчеркивания, но не с цифры. Например, переменной можно присвоить имя <strong>message_1</strong>, но не <strong>1_message</strong>.</li>
+<li>Пробелы в именах переменных запрещены, а для разделения слов в именах переменных используются символы подчеркивания. Например, имя <strong>greeting_message</strong> допустимо, а имя <strong>greeting message</strong> вызовет ошибку.</li>
+<li>Не используйте имена функций и ключевые слова Python в качестве имен переменных; иначе говоря, не используйте слова, которые зарезервированы в Python для конкретной цели, например слово <strong>print</strong>.</li>
+<li>Чтобы имя переменной не совпало с ключевым словом Python, достаточно делать 2-х составные имена, объединенные нижним подчеркиванием. Пример: <strong>print_text</strong> или <strong>first_name</strong>.</li>
+<li>Имена переменных должны быть короткими, но содержательными. Например, имя <strong>name</strong> лучше чем <strong>n</strong>, имя <strong>student_name</strong> лучше <strong>s_n</strong>, а имя <strong>name_length</strong> лучше <strong>length_of_persons_name</strong>.</li>
+<li>Будьте внимательны при использовании строчной буквы <strong>l</strong> и прописной буквы <strong>O</strong>, потому что они похожи на цифры <strong>1</strong> и <strong>0</strong>.</li>
+</ul>
+<p>Вероятно, вы не сразу научитесь создавать хорошие имена переменных, особенно когда ваши программы станут более сложными и интересными. Но когда вы начнете писать свои программы и читать код, написанный другими разработчиками, ваши имена переменных станут более содержательными.</p>
+<div class="admonition note">
+<p class="first admonition-title">Примечание</p>
+<p class="last">Пока ограничьтесь именами переменных, записанными в нижнем регистре, т.е. строчными (маленькими) буквами. Использование символов верхнего регистра не приведет к ошибке, и все же пока лучше обойтись без них.</p>
+</div>
+</div>
+<div class="section" id="id14">
+<h3>2.3.4. Упражнения<a class="headerlink" href="#id14" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Напишите отдельную программу для выполнения каждого из следующих упражнений. Сохраните каждую программу в файле, имя которого подчиняется стандартным правилам Python по использованию строчных букв и символов подчеркивания – например, <strong>simple_message.py</strong> и <strong>simple_messages.py</strong>.</p>
+<ol class="arabic simple">
+<li>Простое сообщение: сохраните текстовое сообщение «Nice job!» в переменной и выведите его на экран.</li>
+<li>Простые сообщения: сохраните сообщение «Why are you doing this?» в переменной и выведите это сообщение. Затем замените значение переменной сообщением «Because we can!» и выведите новое сообщение.</li>
+<li>Вывести на экран пример: 2 + 2 = 4.</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../../index.html">Оглавление</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2. Python начало</a><ul>
+<li><a class="reference internal" href="#id1">2.1. Установка Python</a><ul>
+<li><a class="reference internal" href="#python-windows">2.1.1. Python в Windows</a></li>
+<li><a class="reference internal" href="#python-3-windows">2.1.2. Установка Python 3 в Windows</a></li>
+<li><a class="reference internal" href="#id2">2.1.3. Редакторы кода</a><ul>
+<li><a class="reference internal" href="#idle">2.1.3.1. IDLE</a></li>
+<li><a class="reference internal" href="#pycharm">2.1.3.2. PyCharm</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id3">2.2. Приложения на Python</a><ul>
+<li><a class="reference internal" href="#id4">2.2.1. Термины</a></li>
+<li><a class="reference internal" href="#id5">2.2.2. Типы приложений</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#python-print">2.3. Python «print()» и именование переменных</a><ul>
+<li><a class="reference internal" href="#id6">2.3.1. Термины</a></li>
+<li><a class="reference internal" href="#id7">2.3.2. Python «print()» - назначение</a><ul>
+<li><a class="reference internal" href="#id8">2.3.2.1. Синтаксис</a></li>
+<li><a class="reference internal" href="#id9">2.3.2.2. Пример 1</a></li>
+<li><a class="reference internal" href="#id10">2.3.2.3. Пример 2</a></li>
+<li><a class="reference internal" href="#id11">2.3.2.4. Пример 3</a></li>
+<li><a class="reference internal" href="#id12">2.3.2.5. Пример 4</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id13">2.3.3. Выбор имён переменных</a></li>
+<li><a class="reference internal" href="#id14">2.3.4. Упражнения</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Предыдущий раздел</h4>
+  <p class="topless"><a href="../0100_master-class/0100_master-class.html"
+                        title="предыдущая глава">1. Почему Python?</a></p>
+  <h4>Следующий раздел</h4>
+  <p class="topless"><a href="../0102/0102.html"
+                        title="следующая глава">3. Python типы данных</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Эта страница</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/python_3/01_first - tkinter&amp;basics/0101/0101.rst.txt"
+            rel="nofollow">Исходный текст</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Быстрый поиск</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Искать" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Навигация</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="Алфавитный указатель"
+             >указатель</a></li>
+        <li class="right" >
+          <a href="../0102/0102.html" title="3. Python типы данных"
+             >вперёд</a> |</li>
+        <li class="right" >
+          <a href="../0100_master-class/0100_master-class.html" title="1. Почему Python?"
+             >назад</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Документация Python 3: практическое применение 0.1</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, SmartPer.
+      Создано с помощью <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.6.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+.. include:: content/title.txt
+.. include:: content/terms.txt
+
+.. include:: content/theory_install.txt
+
+.. include:: content/theory_typeApp.txt
+
+.. include:: content/theory_consoleApp_var.txt
+
+.. include:: content/syntax.txt
+.. include:: content/examples.txt
+
+.. include:: content/theory_name_var.txt
+.. include:: content/tasks.txt
